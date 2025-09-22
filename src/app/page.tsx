@@ -3,12 +3,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 
-
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation  } from 'swiper/modules';
 import {Award, Users, Clock, CheckCircle} from 'lucide-react'
 
+function saludo(){
+    console.log('hola')
+}
 const features = [
     {
       title: "Calidad Garantizada",
@@ -34,28 +35,23 @@ export default function Home() {
           <Swiper
             spaceBetween={30}
             centeredSlides={true}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-            }}
-            pagination={{
-              clickable: true,
-            }}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            pagination={{ clickable: true }}
             navigation={true}
             modules={[Autoplay, Pagination, Navigation]}
-            className="bg-blue-950 h-[100dvh]"
+            className="bg-blue-950 h-[100dvh] w-full"
           >
-            <SwiperSlide className="flex justify-center items-center">
-                <span className='text-5xl text-white font-white font-bold text-shadow-lg/30'>
-                Prueba de slider productos
-              </span>
-              <img src='/logo.png' alt='imagen prueba' className="w-[400px]"/>
+            <SwiperSlide className="h-full flex justify-center items-center gap-8">
+                <span className='text-5xl text-white font-bold'>
+                  Prueba de slider productos
+                </span>
+                <img src='/logo.png' alt='imagen prueba' className="w-[400px] max-w-full"/>
             </SwiperSlide>
-            <SwiperSlide className="flex justify-around items-center">
-                <span className='text-5xl text-white font-white font-bold text-shadow-lg/30'>
-                Prueba de slider productos 2
-              </span> 
-              <img src='/logo.png' alt='imagen prueba' className="w-[400px]"/>
+            <SwiperSlide className="h-full flex justify-center items-center gap-8">
+                <span className='text-5xl text-white font-bold'>
+                  Prueba de slider productos 2
+                </span> 
+                <img src='/logo.png' alt='imagen prueba' className="w-[400px] max-w-full"/>
             </SwiperSlide>
           </Swiper>
       </section>
@@ -94,29 +90,60 @@ export default function Home() {
       <section className="bg-gray-50 my-22">
           <div className="container mx-auto py-5">
             <h2 className="text-4xl font-semibold text-blue-900 border-b-2 border-blue-300 pb-2">Productos y Soluciones</h2>
-            <section className="grid md:grid-cols-3 mt-4">
+            <section className="grid md:grid-cols-3 mt-4  text-shadow-lg">
               <div className="cat bg-blue-950 h-[300px] flex flex-col justify-center items-center text-white font-semibol text-3xl">
                  <img src="/logo2.jpg" className="h-[200px]" />
                  <h3>Categoria 1</h3>
               </div>
-              <div className="bg-blue-400 h-[300px] flex flex-col justify-center items-center text-white font-semibol text-3xl">
+              <div className="cat bg-blue-400 h-[300px] flex flex-col justify-center items-center text-white font-semibol text-3xl">
                  <img src="/logo2.jpg" className="h-[200px]" />
                  <h3>Categoria 1</h3>
               </div>
-              <div className="bg-blue-950 h-[300px] flex flex-col justify-center items-center text-white font-semibol text-3xl">
+              <div className="cat bg-blue-950 h-[300px] flex flex-col justify-center items-center text-white font-semibol text-3xl">
                  <img src="/logo2.jpg" className="h-[200px]" />
                  <h3>Categoria 1</h3>
               </div>
             </section>
           </div>
       </section>
-      
-      <section>
-        <h2>Novedades</h2>
+      <section className="my-22">
+        <h2 className="text-4xl font-semibold text-blue-900 border-b-2 border-blue-300 pb-2 text-center">Productos Destacados</h2>
+        <Swiper
+            slidesPerView={'auto'}
+            centeredSlides={true}
+            spaceBetween={60}
+            pagination={{ clickable: true }}
+            modules={[Pagination]}
+            className="container mx-auto text-xl font-semibold text-center p-18 my-10"
+        >
+            <SwiperSlide className="!w-[280px] md:!w-[400px] lg:!w-[600px]">
+                <img onClick={saludo} src="/logo.png" alt="producto" className="w-full h-auto" />
+                <h2 className="mt-4">Nombre producto</h2>
+            </SwiperSlide>
+            <SwiperSlide className="!w-[280px] md:!w-[400px] lg:!w-[600px]">
+                <img onClick={saludo} src="/logo.png" alt="producto" className="w-full h-auto" />
+                <h2 className="mt-4">Nombre producto</h2>
+            </SwiperSlide>
+            <SwiperSlide className="!w-[280px] md:!w-[400px] lg:!w-[600px]">
+                <img onClick={saludo} src="/logo.png" alt="producto" className="w-full h-auto" />
+                <h2 className="mt-4">Nombre producto</h2>
+            </SwiperSlide> 
+        </Swiper>
       </section>
-      
+      <section className="max-w-5xl mx-auto my-22">
+            <h2 className="text-4xl font-semibold text-blue-900 border-b-2 border-blue-300 pb-2 text-right">
+                Novedades
+            </h2>
+            <div className="flex justify-beteween items-center "> 
+                <img src="/novedades.jpg" alt="novedades" className="h-[400px] w-auto" />
+                <div className="bg-gray-100 flex flex-col items-cetner justify-center h-full">
+                    <div className="border-b-2 border-blue-200">
+                        <h2>TITULO NOTICIA</h2>
+                        <p>Descripcion corta</p>  
+                    </div>  
+                </div>
+            </div>
+      </section>
     </>
-    
-    
   );
 }
