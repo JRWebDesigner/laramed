@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
-
+import 'swiper/css/autoplay';
 import { Autoplay, Pagination, Navigation  } from 'swiper/modules';
 import {Award, Users, Clock, CheckCircle} from 'lucide-react'
 
@@ -28,10 +28,43 @@ const features = [
     }
   ];
   
+const noticias=[
+    {
+        title:"titulo noticia 1",
+        description:"descripcion noticia 1"
+    },{
+        title:"titulo noticia 2",
+        description:"descripcion noticia 2"
+    },{
+        title:"titulo noticia 3",
+        description:"descripcion noticia 3"
+    },{
+        title:"titulo noticia 4",
+        description:"descripcion noticia 4"
+    },{
+        title:"titulo noticia 5",
+        description:"descripcion noticia 5"
+    },{
+        title:"titulo noticia 6",
+        description:"descripcion noticia 6"
+    },{
+        title:"titulo noticia 7",
+        description:"descripcion noticia 2"
+    },{
+        title:"titulo noticia 8",
+        description:"descripcion noticia 3"
+    },{
+        title:"titulo noticia 9",
+        description:"descripcion noticia 4"
+    },{
+        title:"titulo noticia 10",
+        description:"descripcion noticia 5"
+    },
+]
 export default function Home() {
   return (
     <>
-      <section className="">
+      <section className="relative">
           <Swiper
             spaceBetween={30}
             centeredSlides={true}
@@ -39,15 +72,15 @@ export default function Home() {
             pagination={{ clickable: true }}
             navigation={true}
             modules={[Autoplay, Pagination, Navigation]}
-            className="bg-blue-950 h-[100dvh] w-full"
+            className="relative bg-blue-950 h-[100dvh] w-full"
           >
-            <SwiperSlide className="h-full flex justify-center items-center gap-8">
+            <SwiperSlide className="!flex !justify-around !items-center gap-10">
                 <span className='text-5xl text-white font-bold'>
                   Prueba de slider productos
                 </span>
                 <img src='/logo.png' alt='imagen prueba' className="w-[400px] max-w-full"/>
             </SwiperSlide>
-            <SwiperSlide className="h-full flex justify-center items-center gap-8">
+            <SwiperSlide className="!flex !justify-around !items-center gap-10">
                 <span className='text-5xl text-white font-bold'>
                   Prueba de slider productos 2
                 </span> 
@@ -111,10 +144,11 @@ export default function Home() {
         <Swiper
             slidesPerView={'auto'}
             centeredSlides={true}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
             spaceBetween={60}
             pagination={{ clickable: true }}
-            modules={[Pagination]}
-            className="container mx-auto text-xl font-semibold text-center p-18 my-10"
+            modules={[Pagination, Autoplay]}
+            className="container mx-auto text-xl font-semibold text-center !p-18 !my-10"
         >
             <SwiperSlide className="!w-[280px] md:!w-[400px] lg:!w-[600px]">
                 <img onClick={saludo} src="/logo.png" alt="producto" className="w-full h-auto" />
@@ -134,13 +168,18 @@ export default function Home() {
             <h2 className="text-4xl font-semibold text-blue-900 border-b-2 border-blue-300 pb-2 text-right">
                 Novedades
             </h2>
-            <div className="flex justify-beteween items-center "> 
-                <img src="/novedades.jpg" alt="novedades" className="h-[400px] w-auto" />
-                <div className="bg-gray-100 flex flex-col items-cetner justify-center h-full">
-                    <div className="border-b-2 border-blue-200">
-                        <h2>TITULO NOTICIA</h2>
-                        <p>Descripcion corta</p>  
-                    </div>  
+            <div className="grid grid-cols-2 bg-orange-50 max-h-[390px] rounded-bl-3xl rounded-br-3xl"> 
+                <img src="/novedades.jpg" alt="novedades" className="h-[390px] w-auto rounded-bl-3xl" />
+                <div className="p-7 overflow-y-auto">
+                    {
+                        noticias.map((noticia,index)=>(
+                            <div key={index} className="border-b-2 border-blue-200 py-5 rounded-br-3xl">
+                                <h2 className="font-bold text-lg text-blue-950 underline">{noticia.title} </h2>
+                                <p>{noticia.description}</p>  
+                            </div>
+                        ))
+                    }
+                    
                 </div>
             </div>
       </section>
