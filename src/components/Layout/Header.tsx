@@ -57,7 +57,6 @@ export default function Header() {
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Detectar cambios en el tamaño de la pantalla
   useEffect(() => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -88,11 +87,10 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed p-2 w-full bg-white shadow-md z-50">
+    <header className="fixed w-full bg-white shadow-md z-50 h-[67px]">
       <div className="container mx-auto flex justify-between items-center">
         <img src='/logo.png' className='relative z-50 h-12' alt="Logo" />
         
-        {/* Botón de menú hamburguesa para móviles */}
         <button 
           className="md:hidden p-2 text-gray-700 focus:outline-none"
           onClick={toggleMenu}
@@ -103,30 +101,29 @@ export default function Header() {
           </svg>
         </button>
 
-        {/* Navegación para desktop */}
         <nav className="hidden md:block relative h-full">
           <ul className="flex justify-around items-center gap-8 h-full">
             {links.map((link, index) => (
               <li 
                 key={index} 
-                className="relative group h-full"
+                className="relative group h-[67px] hover:text-blue-700 duration-100 flex items-center justify-center"
                 onMouseEnter={() => link.submenu && handleProductsHover(true)}
                 onMouseLeave={() => link.submenu && handleProductsHover(false)}
               >
                 {link.submenu ? (
                   <>
-                    <button 
-                      className="flex items-center focus:outline-none hover:text-blue-700 duration-100 h-full"
+                    <Link href='/productos'
+                      className="flex items-center focus:outline-none h-full"
                       onClick={handleProductsClick}
                     >
                       {link.name}
                       <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
-                    </button>
+                    </Link>
                     
                     {isProductsOpen && (
-                      <div className="fixed left-0 w-screen bg-white shadow-xl py-6 z-40 mt-2 border-t border-gray-200 top-[30px]">
+                      <div className="fixed left-0 top-[60px] w-screen bg-white shadow-xl py-6 z-40 mt-2 border-t border-gray-200">
                         <div className="container mx-auto">
                           <div className="grid grid-cols-5 gap-6">
                             {link.submenu.map((item, idx) => (
@@ -151,7 +148,7 @@ export default function Header() {
                     )}
                   </>
                 ) : (
-                  <Link href={link.href} className="hover:text-blue-700 duration-100">
+                  <Link href={link.href} className="hover:text-blue-700 duration-100 flex items-center">
                     {link.name}
                   </Link>
                 )}
@@ -161,7 +158,6 @@ export default function Header() {
         </nav>
       </div>
 
-      {/* Menú para móviles */}
       {isMenuOpen && (
         <div className="md:hidden bg-white shadow-lg mt-2">
           <ul className="py-4">
@@ -185,7 +181,6 @@ export default function Header() {
                       </svg>
                     </button>
                     
-                    {/* Submenú de productos para móviles */}
                     {isProductsOpen && (
                       <div className="bg-gray-50 px-4 py-3">
                         <div className="grid grid-cols-2 gap-3">
