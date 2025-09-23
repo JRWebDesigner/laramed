@@ -25,6 +25,8 @@ export default function sobreNosotros(){
         </div>
       </section>
       
+      {/*PONER PRODUCTOS DESTACADOS Y BOTON DE IR A PRODUCTOS IMPORTANTE*/}
+      
     </>
   )
 }
