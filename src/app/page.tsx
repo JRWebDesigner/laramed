@@ -7,9 +7,6 @@ import 'swiper/css/autoplay';
 import { Autoplay, Pagination, Navigation  } from 'swiper/modules';
 import {Award, Users, Clock, CheckCircle} from 'lucide-react'
 
-function saludo(){
-    console.log('hola')
-}
 const features = [
     {
       title: "Calidad Garantizada",
@@ -64,7 +61,8 @@ const noticias=[
 export default function Home() {
   return (
     <>
-      <section className="relative">
+      <section className="relative h-[100dvh] bg-[url('/banner.jpg')] max-h-[900px] bg-cover bg-fixed">
+          <div className="absolute bg-black h-full w-full opacity-40 z-0"/>
           <Swiper
             spaceBetween={30}
             centeredSlides={true}
@@ -72,16 +70,16 @@ export default function Home() {
             pagination={{ clickable: true }}
             navigation={true}
             modules={[Autoplay, Pagination, Navigation]}
-            className="relative bg-blue-950 h-[100dvh] w-full"
+            className="relative h-[100dvh] w-full !px-7"
           >
-            <SwiperSlide className="!flex !justify-around !items-center gap-10">
-                <span className='text-5xl text-white font-bold'>
+            <SwiperSlide className="!flex flex-col-reverse md:flex-row justify-center md:!justify-around !items-center gap-10">
+                <span className='text-5xl text-white font-bold text-center md:text-left'>
                   Prueba de slider productos
                 </span>
                 <img src='/logo.png' alt='imagen prueba' className="w-[400px] max-w-full"/>
             </SwiperSlide>
-            <SwiperSlide className="!flex !justify-around !items-center gap-10">
-                <span className='text-5xl text-white font-bold'>
+            <SwiperSlide className="!flex flex-col-reverse md:flex-row justify-center md:!justify-around !items-center gap-10">
+                <span className='text-5xl text-white font-bold text-center md:text-left'>
                   Prueba de slider productos 2
                 </span> 
                 <img src='/logo.png' alt='imagen prueba' className="w-[400px] max-w-full"/>
@@ -120,7 +118,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="bg-gray-50 my-22">
+      <section className="bg-gray-50 my-22 px-5">
           <div className="container mx-auto py-5">
             <h2 className="text-4xl font-semibold text-blue-900 border-b-2 border-blue-300 pb-2">Productos y Soluciones</h2>
             <section className="grid md:grid-cols-3 mt-4  text-shadow-lg">
@@ -139,7 +137,7 @@ export default function Home() {
             </section>
           </div>
       </section>
-      <section className="my-22">
+      <section className="my-22 px-5">
         <h2 className="text-4xl font-semibold text-blue-900 border-b-2 border-blue-300 pb-2 text-center">Productos Destacados</h2>
         <Swiper
             slidesPerView={'auto'}
@@ -151,26 +149,26 @@ export default function Home() {
             className="container mx-auto text-xl font-semibold text-center !p-18 !my-10"
         >
             <SwiperSlide className="!w-[280px] md:!w-[400px] lg:!w-[600px]">
-                <img onClick={saludo} src="/logo.png" alt="producto" className="w-full h-auto" />
+                <img  src="/logo.png" alt="producto" className="w-full h-auto" />
                 <h2 className="mt-4">Nombre producto</h2>
             </SwiperSlide>
             <SwiperSlide className="!w-[280px] md:!w-[400px] lg:!w-[600px]">
-                <img onClick={saludo} src="/logo.png" alt="producto" className="w-full h-auto" />
+                <img  src="/logo.png" alt="producto" className="w-full h-auto" />
                 <h2 className="mt-4">Nombre producto</h2>
             </SwiperSlide>
             <SwiperSlide className="!w-[280px] md:!w-[400px] lg:!w-[600px]">
-                <img onClick={saludo} src="/logo.png" alt="producto" className="w-full h-auto" />
+                <img  src="/logo.png" alt="producto" className="w-full h-auto" />
                 <h2 className="mt-4">Nombre producto</h2>
             </SwiperSlide> 
         </Swiper>
       </section>
-      <section className="max-w-5xl mx-auto my-22">
+      <section className="relative max-w-5xl mx-auto my-22 px-5">
             <h2 className="text-4xl font-semibold text-blue-900 border-b-2 border-blue-300 pb-2 text-right">
                 Novedades
             </h2>
-            <div className="grid grid-cols-2 bg-orange-50 max-h-[390px] rounded-bl-3xl rounded-br-3xl"> 
-                <img src="/novedades.jpg" alt="novedades" className="h-[390px] w-auto rounded-bl-3xl" />
-                <div className="p-7 overflow-y-auto">
+            <div className="grid grid-cols-2 bg-gray-50 max-h-[390px] rounded-bl-3xl rounded-br-3xl"> 
+                <img src="/novedades.jpg" alt="novedades" className="h-[390px] w-auto rounded-bl-3xl object-cover" />
+                <div className="p-7 overflow-y-auto max-h-[390px]">
                     {
                         noticias.map((noticia,index)=>(
                             <div key={index} className="border-b-2 border-blue-200 py-5 rounded-br-3xl">

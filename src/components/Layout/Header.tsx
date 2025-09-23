@@ -87,10 +87,9 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed w-full bg-white shadow-md z-50 h-[67px]">
+    <header className="fixed w-full bg-white shadow-md z-50 h-[67px] p-3">
       <div className="container mx-auto flex justify-between items-center">
-        <img src='/logo.png' className='relative z-50 h-12' alt="Logo" />
-        
+        <Link href="/" ><img src='/logo.png' className='relative z-50 h-12' alt="Logo" /></Link>
         <button 
           className="md:hidden p-2 text-gray-700 focus:outline-none"
           onClick={toggleMenu}
