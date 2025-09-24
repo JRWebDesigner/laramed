@@ -87,7 +87,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed w-full bg-white shadow-md z-50 h-[67px] p-3">
+    <header className="fixed w-full bg-white shadow-md z-50 h-[80px] p-3">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" ><img src='/logo.png' className='relative z-50 h-12' alt="Logo" /></Link>
         <button 

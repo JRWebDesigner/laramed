@@ -55,12 +55,12 @@ export default function Productos(){
           </Accordion>
         </div>
       </section>
-      <section className="container mx-auto grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-10 my-10 px-5">
+      <section className="container mx-auto grid grid-cols-2 md:grid-cols-3 gap-10 my-10 px-5">
         {[1,2,3,4,5].map(index=>(
-          <div className='flex flex-col items-center gap-3 shadow-lg hover:scale-105 duration-100 rounded-lg bg-gray-50'>
+          <Link href="/productos/producto" className='flex flex-col items-center gap-3 shadow-lg hover:scale-105 duration-100 rounded-lg bg-gray-50'>
             <img src="/logo.png" alt="producto" className="w-full h-auto" />
             <h2 className="text-lg md:text-2xl">Nombre producto</h2>
-          </div>
+          </Link>
         ))
         }
       </section>
