@@ -1,6 +1,7 @@
 "use client"
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 const links = [
   {
@@ -56,7 +57,8 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-
+  const pathname = usePathname();
+ 
   useEffect(() => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -102,57 +104,61 @@ export default function Header() {
 
         <nav className="hidden md:block relative h-full">
           <ul className="flex justify-around items-center gap-8 h-full">
-            {links.map((link, index) => (
-              <li 
-                key={index} 
-                className="relative group h-[67px] hover:text-blue-700 duration-100 flex items-center justify-center"
-                onMouseEnter={() => link.submenu && handleProductsHover(true)}
-                onMouseLeave={() => link.submenu && handleProductsHover(false)}
-              >
-                {link.submenu ? (
-                  <>
-                    <Link href='/productos'
-                      className="flex items-center focus:outline-none h-full"
-                      onClick={handleProductsClick}
-                    >
-                      {link.name}
-                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </Link>
-                    
-                    {isProductsOpen && (
-                      <div className="fixed left-0 top-[60px] w-screen bg-white shadow-xl py-6 z-40 mt-2 border-t border-gray-200">
-                        <div className="container mx-auto">
-                          <div className="grid grid-cols-5 gap-6">
-                            {link.submenu.map((item, idx) => (
-                              <Link key={idx} href={item.href}>
-                                <div className="flex flex-col items-center p-3 rounded-lg hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-gray-200">
-                                  <div className="w-20 h-20 bg-gray-100 rounded-full mb-3 overflow-hidden flex items-center justify-center">
-                                    {item.image ? (
-                                      <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
-                                    ) : (
-                                      <div className="w-full h-full flex items-center justify-center bg-blue-100 text-blue-800 text-xs">
-                                        <span>Imagen</span>
-                                      </div>
-                                    )}
+            {links.map((link, index) => {
+              // Detecta si el link es activo
+              const isActive = link.href === pathname || (link.submenu && link.href === '/productos' && pathname.startsWith('/productos'));
+              return (
+                <li 
+                  key={index} 
+                  className='relative group h-[67px] duration-100 flex items-center justify-center'
+                  onMouseEnter={() => link.submenu && handleProductsHover(true)}
+                  onMouseLeave={() => link.submenu && handleProductsHover(false)}
+                >
+                  {link.submenu ? (
+                    <>
+                      <Link href='/productos'
+                        className={`flex items-center ${isActive ? 'rounded-full bg-[#64b9c0] text-white py-2 px-3 font-bold' : 'hover:text-blue-700'}`}
+                        onClick={handleProductsClick}
+                      >
+                        {link.name}
+                        <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </Link>
+                      
+                      {isProductsOpen && (
+                        <div className="fixed left-0 top-[60px] w-screen bg-white shadow-xl py-6 z-40 mt-2 border-t border-gray-200">
+                          <div className="container mx-auto">
+                            <div className="grid grid-cols-5 gap-6">
+                              {link.submenu.map((item, idx) => (
+                                <Link key={idx} href={item.href}>
+                                  <div className="flex flex-col items-center p-3 rounded-lg hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-gray-200">
+                                    <div className="w-20 h-20 bg-gray-100 rounded-full mb-3 overflow-hidden flex items-center justify-center">
+                                      {item.image ? (
+                                        <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                                      ) : (
+                                        <div className="w-full h-full flex items-center justify-center bg-blue-100 text-blue-800 text-xs">
+                                          <span>Imagen</span>
+                                        </div>
+                                      )}
+                                    </div>
+                                    <span className="text-sm font-medium text-center text-gray-700">{item.name}</span>
                                   </div>
-                                  <span className="text-sm font-medium text-center text-gray-700">{item.name}</span>
-                                </div>
-                              </Link>
-                            ))}
+                                </Link>
+                              ))}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <Link href={link.href} className="hover:text-blue-700 duration-100 flex items-center">
-                    {link.name}
-                  </Link>
-                )}
-              </li>
-            ))}
+                      )}
+                    </>
+                  ) : (
+                    <Link href={link.href} className={`flex items-center ${isActive ? ' rounded-full bg-[#64b9c0] text-white py-2 px-3 font-bold' : 'hover:text-blue-700'}`}>
+                      {link.name}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </div>

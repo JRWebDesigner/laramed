@@ -6,7 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import { Autoplay, Pagination, Navigation  } from 'swiper/modules';
-import {Award, Users, Clock, CheckCircle} from 'lucide-react'
+import {Award, Wrench , Clock, CheckCircle} from 'lucide-react'
 
 const features = [
     {
@@ -17,7 +17,7 @@ const features = [
     {
       title: "Soporte Técnico",
       description: "Equipo especializado para instalación y mantenimiento",
-      icon: Users
+      icon: Wrench 
     },
     {
       title: "Entrega Rápida",
@@ -98,7 +98,7 @@ export default function Home() {
             </h2>
                           
               <div 
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-7"
               >
                 {features.map((feature, index) => {
                   const IconComponent = feature.icon;
@@ -107,8 +107,8 @@ export default function Home() {
                       key={index} 
                       className="text-center group hover:transform hover:scale-105 transition-transform duration-300"
                     >
-                      <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-200 transition-colors">
-                        <IconComponent className="w-10 h-10 text-blue-950" />
+                      <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-200 transition-colors">
+                        <IconComponent className="w-10 h-10 text-[#64b9c0]" />
                        </div>
                       <h3 className="text-xl font-semibold text-gray-900 mb-4">{feature.title}</h3>
                       <p className="text-gray-600">{feature.description}</p>
