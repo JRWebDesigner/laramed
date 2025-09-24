@@ -6,11 +6,9 @@ export default function Contactos(){
             <h1 className="z-20 font-bold text-center md:text-left text-4xl md:text-6xl container mx-auto text-shadow-lg">Comunícate con Laramed para Consultas sobre Equipos Médicos</h1>
         </section>
         
-        {/* Sección de información de contacto */}
         <section className="py-16 bg-gray-50">
             <div className="container mx-auto px-5">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {/* Información de contacto */}
                     <div className="bg-white p-8 rounded-lg shadow-md">
                         <h2 className="text-2xl font-bold text-gray-800 mb-6">Información de Contacto</h2>
                         
@@ -110,7 +108,7 @@ export default function Contactos(){
                                 <label htmlFor="mensaje" className="block text-sm font-medium text-gray-700 mb-1">Mensaje *</label>
                                 <textarea 
                                     id="mensaje" 
-                                    rows="5" 
+                                    rows={5} 
                                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     required
                                 ></textarea>
@@ -128,13 +126,11 @@ export default function Contactos(){
             </div>
         </section>
         
-        {/* Mapa de ubicación */}
         <section className="py-16">
             <div className="container mx-auto px-5">
                 <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Nuestra Ubicación</h2>
                 
                 <div className="bg-gray-200 h-96 rounded-lg overflow-hidden">
-                    {/* Aquí iría el iframe de Google Maps o un mapa interactivo */}
                     <div className="w-full h-full flex items-center justify-center bg-gray-300">
                         <p className="text-gray-600 text-lg">Mapa de ubicación de Laramed</p>
                     </div>
@@ -142,7 +138,6 @@ export default function Contactos(){
             </div>
         </section>
         
-        {/* Sección de preguntas frecuentes */}
         <section className="py-16 bg-gray-50">
             <div className="container mx-auto px-5">
                 <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Preguntas Frecuentes</h2>
