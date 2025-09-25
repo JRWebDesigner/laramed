@@ -3,7 +3,7 @@ export default function noticias(){
     <div className="bg-gray-50">
       <section className="relative bg-[url('/banner.jpg')] h-[70dvh] md:h-[80dvh] max-h-[900px] bg-cover bg-fixed flex justify-center items-center text-white">
         <div className="absolute bg-black h-full w-full opacity-40 z-0"/>
-        <h1 className="z-20 font-bold text-center md:text-left text-4xl md:text-6xl container mx-auto text-shadow-lg">Noticias y Casos de Éxito de Laramed en el Área Médica</h1>
+        <h1 className="z-20 font-bold text-center text-4xl md:text-6xl container mx-auto text-shadow-lg">Noticias y Casos de Éxito de Laramed S.R.L en el Área Médica</h1>
       </section>  
       <section className="grid md:grid-cols-2 gap-14 px-5 container mx-auto my-22">
         {[1,2,3,4,5,6].map(index=>(

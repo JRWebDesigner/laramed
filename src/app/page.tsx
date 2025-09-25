@@ -91,10 +91,10 @@ export default function Home() {
         <div className="grid place-items-center items-center justify-center gap-6 text-center">
           <div>
             <h1 className="font-bold text-4xl text-blue-900">
-              Laramed: Líder en Importación de Equipos Médicos en Bolivia
+              Laramed S.R.L: Líder en Importación de Equipos Médicos en Bolivia
             </h1>
             <h2 className="text-2xl my-3">
-              ¿Por qué elegir Laramed?
+              ¿Por qué elegir Laramed S.R.L?
             </h2>
                           
               <div 

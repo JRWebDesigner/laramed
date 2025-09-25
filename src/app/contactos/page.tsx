@@ -3,7 +3,7 @@ export default function Contactos(){
     <>
         <section className="relative bg-[url('/banner.jpg')] h-[70dvh] md:h-[80dvh] max-h-[900px] bg-cover bg-fixed flex justify-center items-center text-white px-5">
             <div className="absolute bg-black h-full w-full opacity-40 z-0"/>
-            <h1 className="z-20 font-bold text-center md:text-left text-4xl md:text-6xl container mx-auto text-shadow-lg">Comunícate con Laramed para Consultas sobre Equipos Médicos</h1>
+            <h1 className="z-20 font-bold text-center  text-4xl md:text-6xl container mx-auto text-shadow-lg">Comunícate ahora </h1>
         </section>
         
         <section className="py-16 bg-gray-50">

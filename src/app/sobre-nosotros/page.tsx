@@ -12,7 +12,7 @@ export default function sobreNosotros(){
     <>
       <section className="relative bg-[url('/banner.jpg')] h-[70dvh] md:h-[80dvh] max-h-[900px] bg-cover bg-fixed flex justify-center items-center text-white px-5">
         <div className="absolute bg-black h-full w-full opacity-40 z-0"/>
-        <h1 className="z-20 font-bold text-center md:text-left text-4xl md:text-6xl container mx-auto text-shadow-lg">Laramed: Importadora y Distribuidora de Equipos Médicos en Bolivia</h1>
+        <h1 className="z-20 font-bold text-center text-4xl md:text-6xl container mx-auto text-shadow-lg">Laramed S.R.L: Importadora y Distribuidora de Equipos Médicos en Bolivia</h1>
       </section>  
       <section className="container mx-auto my-22 px-5">
         <h2 className='text-4xl font-bold'>Nuestra Historia</h2>
@@ -22,14 +22,16 @@ export default function sobreNosotros(){
         <br />
         <p>Lorem ipsum dolor sit amet consectetur adipiscing elit tempus, nec integer dis sem vulputate maecenas faucibus nascetur dignissim, mus eros primis blandit in aliquam vestibulum. Erat commodo fusce ut cum facilisi suscipit dui elementum, pretium urna blandit class ad porta placerat, nostra primis eget imperdiet vivamus convallis donec. Ac nunc curabitur massa mollis justo cum per erat hac, porta etiam varius accumsan natoque non hendrerit blandit, nisl parturient neque aliquet leo primis eu maecenas.</p>
       </section>
-      <section className='container mx-auto grid md:grid-cols-2 place-items-center gap-10 my-22 px-5'>
-        <div>
-          <h3 className="text-3xl font-semibold">Mision</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipiscing elit tempus, nec integer dis sem vulputate maecenas faucibus nascetur dignissim, mus eros primis blandit in aliquam vestibulum. Erat commodo fusce ut cum facilisi suscipit dui elementum, pretium urna blandit class ad porta placerat, nostra primis eget imperdiet vivamus convallis donec. Ac nunc curabitur massa mollis justo cum per erat hac, porta etiam varius accumsan natoque non hendrerit blandit, nisl parturient neque aliquet leo primis eu maecenas.</p>
+      <section className='relative container mx-auto grid md:grid-cols-2 place-items-center my-22 px-5 text-white'>
+        <div className="relative bg-[url('/mision.jpg')] bg-norepeat bg-cover">
+          <div className="absolute bg-[#000] h-full w-full opacity-60 z-0"/>
+          <h3 className="relative z-10 text-3xl font-semibold p-6">Mision</h3>
+          <p className="relative z-10 p-6">Lorem ipsum dolor sit amet consectetur adipiscing elit tempus, nec integer dis sem vulputate maecenas faucibus nascetur dignissim, mus eros primis blandit in aliquam vestibulum. Erat commodo fusce ut cum facilisi suscipit dui elementum, pretium urna blandit class ad porta placerat, nostra primis eget imperdiet vivamus convallis donec. Ac nunc curabitur massa mollis justo cum per erat hac, porta etiam varius accumsan natoque non hendrerit blandit, nisl parturient neque aliquet leo primis eu maecenas.</p>
         </div>
-        <div>
-          <h3 className="text-3xl font-semibold">Vision</h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipiscing elit tempus, nec integer dis sem vulputate maecenas faucibus nascetur dignissim, mus eros primis blandit in aliquam vestibulum. Erat commodo fusce ut cum facilisi suscipit dui elementum, pretium urna blandit class ad porta placerat, nostra primis eget imperdiet vivamus convallis donec. Ac nunc curabitur massa mollis justo cum per erat hac, porta etiam varius accumsan natoque non hendrerit blandit, nisl parturient neque aliquet leo primis eu maecenas.</p>
+        <div className="relative bg-[url('/mision.jpg')] bg-norepeat bg-cover bg-[url('/vision.jpg')]">
+          <div className="absolute bg-[#000] h-full w-full opacity-40 z-0"/>
+          <h3 className="relative z-10 text-3xl font-semibold p-6">Vision</h3>
+          <p className="relative z-10 p-6">Lorem ipsum dolor sit amet consectetur adipiscing elit tempus, nec integer dis sem vulputate maecenas faucibus nascetur dignissim, mus eros primis blandit in aliquam vestibulum. Erat commodo fusce ut cum facilisi suscipit dui elementum, pretium urna blandit class ad porta placerat, nostra primis eget imperdiet vivamus convallis donec. Ac nunc curabitur massa mollis justo cum per erat hac, porta etiam varius accumsan natoque non hendrerit blandit, nisl parturient neque aliquet leo primis eu maecenas.</p>
         </div>
       </section>
       <section className="container mx-auto flex items-center flex-col my-22 px-5">
