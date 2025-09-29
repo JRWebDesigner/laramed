@@ -8,6 +8,26 @@ import 'swiper/css/autoplay';
 import { Autoplay, Pagination, Navigation  } from 'swiper/modules';
 import {Award, Wrench , Clock, CheckCircle} from 'lucide-react'
 
+const sliders=[
+    {
+        title:'slider1',
+        image:'/logo.png'
+    }
+]
+
+const categorys=[
+    /*{
+        name:'categoria 1',
+        slug:'/',
+        image:'/logo.png'    
+    },
+    {
+        name:'categoria 2',
+        slug:'/',
+        image:'/logo.png'      
+    }*/
+]
+
 const features = [
     {
       title: "Calidad Garantizada",
@@ -64,28 +84,40 @@ export default function Home() {
     <>
       <section className="relative h-[100dvh] bg-[url('/banner.jpg')] max-h-[900px] bg-cover bg-fixed">
           <div className="absolute bg-black h-full w-full opacity-40 z-0"/>
-          <Swiper
-            spaceBetween={30}
-            centeredSlides={true}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
-            pagination={{ clickable: true }}
-            navigation={true}
-            modules={[Autoplay, Pagination, Navigation]}
-            className="relative h-[100dvh] w-full !px-7"
-          >
-            <SwiperSlide className="!flex flex-col-reverse md:flex-row justify-center md:!justify-around !items-center gap-10">
-                <span className='text-5xl text-white font-bold text-center md:text-left'>
-                  Prueba de slider productos
-                </span>
-                <img src='/logo.png' alt='imagen prueba' className="w-[400px] max-w-full"/>
-            </SwiperSlide>
-            <SwiperSlide className="!flex flex-col-reverse md:flex-row justify-center md:!justify-around !items-center gap-10">
-                <span className='text-5xl text-white font-bold text-center md:text-left'>
-                  Prueba de slider productos 2
-                </span> 
-                <img src='/logo.png' alt='imagen prueba' className="w-[400px] max-w-full"/>
-            </SwiperSlide>
-          </Swiper>
+          {sliders && sliders.length > 0 ? (
+              <Swiper
+                spaceBetween={30}
+                centeredSlides={true}
+                autoplay={{ delay: 5000, disableOnInteraction: false }}
+                pagination={{ clickable: true }}
+                navigation={true}
+                modules={[Autoplay, Pagination, Navigation]}
+                className="relative h-[100dvh] w-full !px-7"
+              >
+                {sliders.map((slider, index) => (
+                  <SwiperSlide
+                    key={index}
+                    className="!flex flex-col-reverse md:flex-row justify-center md:!justify-around !items-center gap-10"
+                  >
+                    <span className="text-5xl text-white font-bold text-center md:text-left">
+                      {slider.title}
+                    </span>
+                    <img
+                      src={slider.image}
+                      alt="imagen prueba"
+                      className="w-[400px] max-w-full"
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+          ) : (
+              <div className="flex justify-center items-center h-[100dvh] w-full">
+                <h1 className="text-5xl font-bold text-white text-center text-shadow-lg">
+                  No hay sliders disponibles
+                </h1>
+              </div>
+          )}
+                
       </section>
       <section className="bg-white w-[80%] max-w-[1000px] mx-auto p-5 my-22">
         <div className="grid place-items-center items-center justify-center gap-6 text-center">
@@ -123,18 +155,21 @@ export default function Home() {
           <div className="container mx-auto py-5">
             <h2 className="text-4xl font-semibold text-blue-900 border-b-2 border-blue-300 pb-2">Productos y Soluciones</h2>
             <section className="grid md:grid-cols-3 mt-4  text-shadow-lg">
-              <div className="cat bg-blue-950 h-[300px] flex flex-col justify-center items-center text-white font-semibol text-3xl">
-                 <img src="/logo2.jpg" className="h-[200px]" />
-                 <h3>Categoria 1</h3>
-              </div>
-              <div className="cat bg-blue-400 h-[300px] flex flex-col justify-center items-center text-white font-semibol text-3xl">
-                 <img src="/logo2.jpg" className="h-[200px]" />
-                 <h3>Categoria 1</h3>
-              </div>
-              <div className="cat bg-blue-950 h-[300px] flex flex-col justify-center items-center text-white font-semibol text-3xl">
-                 <img src="/logo2.jpg" className="h-[200px]" />
-                 <h3>Categoria 1</h3>
-              </div>
+            {
+              categorys && categorys.length > 0 ?
+              (
+                 categorys.map((category,index)=>(
+                  <Link key={index} href={category.slug} className={`cat ${index/2==0? 'bg-blue-950': 'bg-blue-400'} h-[300px] flex flex-col justify-center items-center text-white font-semibol text-3xl`}>
+                   <img src={category.image} className="max-h-[200px] w-[80%]" />
+                   <h3>{category.name}</h3>
+                 </Link> 
+                 ))
+              )
+              :
+              (
+                <h2 className="text-center font-bold text-4xl"> Aun no tenemos categorias disponibles </h2>
+              )
+            }
             </section>
           </div>
       </section>
