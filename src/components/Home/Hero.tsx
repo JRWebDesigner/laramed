@@ -1,14 +1,14 @@
 "use client"
 import {useState} from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import {getCarrusel} from '@/lib/getQueries'
+//import {getCarrusel} from '@/lib/getQueries'
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import { Autoplay, Pagination, Navigation  } from 'swiper/modules';
 
-const sliders= getCarrusel()
+const sliders= []
 
 export default function Hero(){
   console.log(sliders)
