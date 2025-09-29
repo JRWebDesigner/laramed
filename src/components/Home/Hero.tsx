@@ -1,17 +1,23 @@
 "use client"
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-//import {getCarrusel} from '@/lib/getQueries'
+import {getCarrusel} from '@/lib/getQueries'
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import { Autoplay, Pagination, Navigation  } from 'swiper/modules';
 
-const sliders= []
 
 export default function Hero(){
-  console.log(sliders)
+  const [sliders, setSliders] = useState([])
+  useEffect(() => {
+    async function fechData() {
+      const data = await getCarrusel();
+      setSliders(Array.isArray(data.carrusel) ? data.carrusel : []);
+    }
+    fechData();
+  }, []);
   return(
     <section className="relative h-[100dvh] bg-[url('/banner.jpg')] max-h-[900px] bg-cover bg-fixed">
       <div className="absolute bg-black h-full w-full opacity-40 z-0"/>
@@ -31,12 +37,12 @@ export default function Hero(){
                   className="!flex flex-col-reverse md:flex-row justify-center md:!justify-around !items-center gap-10"
                 >
                   <span className="text-5xl text-white font-bold text-center md:text-left">
-                    {slider.title}
+                    {slider.slideDescription}
                   </span>
                   <img
-                      src={slider.image}
+                      src={slider.imagen}
                       alt="imagen prueba"
-                      className="w-[400px] max-w-full"
+                      className="max-w-full max-h-[70%]"
                     />
                   </SwiperSlide>
                 ))}

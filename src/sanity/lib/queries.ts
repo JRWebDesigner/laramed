@@ -5,14 +5,12 @@ export const PRODUCTS_QUERY = defineQuery(`*[_type == "producto"]{
       nombre,
       "slug": slug.current,
       "imagenPrincipal": imagenPrincipal.asset->url,
-      featured,
+      destacado,
       descripcion,
-      "imagenes": images[].asset->url,
+      "imagenes": imagenes[].asset->url,
       categoria->{
-        _id,
         nombre,
         "slug": slug.current,
-        "imagenPrincipal": imagenPrincipal.asset->url
       }
     }`);
 
@@ -20,13 +18,13 @@ export const CATEGORIES_QUERY = defineQuery(`*[_type == "categoria"]{
       _id,
       nombre,
       "slug": slug.current,
-      "imagenPrincipal": imagenPrincipal.asset->url
+      "imagen": imagen.asset->url
     }`);
 
-export const CARRUSEL_QUERY = defineQuery(`*[_type == "banner"]{
+export const CARRUSEL_QUERY = defineQuery(`*[_type == "carruselPrincipal"]{
     _id,
     slideDescription,
-    "imagen": image.asset->url
+    "imagen": imagen.asset->url
   }`);
 
 export const PUBLICACIONES_QUERY = defineQuery(`*[_type == "publicacion"] | order(fecha desc){

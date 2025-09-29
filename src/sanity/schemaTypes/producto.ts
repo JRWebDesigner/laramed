@@ -13,7 +13,7 @@ export const producto = defineType({
     }),
     defineField({
       name: 'slug',
-      title: 'Slug',
+      title: 'Enlace',
       type: 'slug',
       options: { source: 'nombre' },
       validation: Rule => Rule.required()

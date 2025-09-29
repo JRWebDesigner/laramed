@@ -1,26 +1,10 @@
-"use client"
 import Link from 'next/link'
 import Hero from '@/components/Home/Hero'
+import Categories from '@/components/Home/Categories'
+import Destacados from '@/components/Destacados'
+import Novedades from '@/components/Home/Novedades'
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
-import { Autoplay, Pagination, Navigation  } from 'swiper/modules';
 import {Award, Wrench , Clock, CheckCircle} from 'lucide-react'
-
-const categorys=[
-    /*{
-        name:'categoria 1',
-        slug:'/',
-        image:'/logo.png'    
-    },
-    {
-        name:'categoria 2',
-        slug:'/',
-        image:'/logo.png'      
-    }*/
-]
 
 const features = [
     {
@@ -39,40 +23,8 @@ const features = [
       icon: Clock
     }
   ];
-  
-const noticias=[
-    {
-        title:"titulo noticia 1",
-        description:"descripcion noticia 1"
-    },{
-        title:"titulo noticia 2",
-        description:"descripcion noticia 2"
-    },{
-        title:"titulo noticia 3",
-        description:"descripcion noticia 3"
-    },{
-        title:"titulo noticia 4",
-        description:"descripcion noticia 4"
-    },{
-        title:"titulo noticia 5",
-        description:"descripcion noticia 5"
-    },{
-        title:"titulo noticia 6",
-        description:"descripcion noticia 6"
-    },{
-        title:"titulo noticia 7",
-        description:"descripcion noticia 2"
-    },{
-        title:"titulo noticia 8",
-        description:"descripcion noticia 3"
-    },{
-        title:"titulo noticia 9",
-        description:"descripcion noticia 4"
-    },{
-        title:"titulo noticia 10",
-        description:"descripcion noticia 5"
-    },
-]
+
+
 export default function Home() {
   return (
     <>
@@ -109,75 +61,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="bg-gray-50 my-22 px-5">
-          <div className="container mx-auto py-5">
-            <h2 className="text-4xl font-semibold text-blue-900 border-b-2 border-blue-300 pb-2">Productos y Soluciones</h2>
-            <section className="grid md:grid-cols-3 mt-4  text-shadow-lg">
-            {
-              categorys && categorys.length > 0 ?
-              (
-                 categorys.map((category,index)=>(
-                  <Link key={index} href={category.slug} className={`cat ${index/2==0? 'bg-blue-950': 'bg-blue-400'} h-[300px] flex flex-col justify-center items-center text-white font-semibol text-3xl`}>
-                   <img src={category.image} className="max-h-[200px] w-[80%]" />
-                   <h3>{category.name}</h3>
-                 </Link> 
-                 ))
-              )
-              :
-              (
-                <>
-                <div/>
-                <h2 className="text-center text-2xl text-gray-800"> Aun no tenemos categorias disponibles </h2>
-                </>
-              )
-            }
-            </section>
-          </div>
-      </section>
-      <section className="my-22 px-5">
-        <h2 className="text-4xl font-semibold text-blue-900 border-b-2 border-blue-300 pb-2 text-center">Productos Destacados</h2>
-        <Swiper
-            slidesPerView={'auto'}
-            centeredSlides={true}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
-            spaceBetween={60}
-            pagination={{ clickable: true }}
-            modules={[Pagination, Autoplay]}
-            className="container mx-auto text-xl font-semibold text-center !p-18 !my-10"
-        >
-            <SwiperSlide className="!w-[280px] md:!w-[400px] lg:!w-[600px]">
-                <img  src="/logo.png" alt="producto" className="w-full h-auto" />
-                <h2 className="mt-4">Nombre producto</h2>
-            </SwiperSlide>
-            <SwiperSlide className="!w-[280px] md:!w-[400px] lg:!w-[600px]">
-                <img  src="/logo.png" alt="producto" className="w-full h-auto" />
-                <h2 className="mt-4">Nombre producto</h2>
-            </SwiperSlide>
-            <SwiperSlide className="!w-[280px] md:!w-[400px] lg:!w-[600px]">
-                <img  src="/logo.png" alt="producto" className="w-full h-auto" />
-                <h2 className="mt-4">Nombre producto</h2>
-            </SwiperSlide> 
-        </Swiper>
-      </section>
-      <section className="relative max-w-5xl mx-auto my-22 px-5">
-            <h2 className="text-4xl font-semibold text-blue-900 border-b-2 border-blue-300 pb-2 text-right">
-                Novedades
-            </h2>
-            <div className="grid grid-cols-2 bg-gray-50 max-h-[390px] rounded-bl-3xl rounded-br-3xl"> 
-                <img src="/novedades.jpg" alt="novedades" className="h-[390px] w-auto rounded-bl-3xl object-cover" />
-                <div className="p-7 overflow-y-auto max-h-[390px]">
-                    {
-                        noticias.map((noticia,index)=>(
-                            <div key={index} className="border-b-2 border-blue-200 py-5 rounded-br-3xl">
-                                <h2 className="font-bold text-lg text-blue-950 underline">{noticia.title} </h2>
-                                <p>{noticia.description}</p>  
-                            </div>
-                        ))
-                    }
-                    
-                </div>
-            </div>
-      </section>
+      <Categories />
+      <Destacados />
+      <Novedades />
     </>
   );
 }
