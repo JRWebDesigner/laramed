@@ -1,19 +1,13 @@
 "use client"
 import Link from 'next/link'
-import { Swiper, SwiperSlide } from 'swiper/react';
+import Hero from '@/components/Home/Hero'
 
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import { Autoplay, Pagination, Navigation  } from 'swiper/modules';
 import {Award, Wrench , Clock, CheckCircle} from 'lucide-react'
-
-const sliders=[
-    {
-        title:'slider1',
-        image:'/logo.png'
-    }
-]
 
 const categorys=[
     /*{
@@ -82,43 +76,7 @@ const noticias=[
 export default function Home() {
   return (
     <>
-      <section className="relative h-[100dvh] bg-[url('/banner.jpg')] max-h-[900px] bg-cover bg-fixed">
-          <div className="absolute bg-black h-full w-full opacity-40 z-0"/>
-          {sliders && sliders.length > 0 ? (
-              <Swiper
-                spaceBetween={30}
-                centeredSlides={true}
-                autoplay={{ delay: 5000, disableOnInteraction: false }}
-                pagination={{ clickable: true }}
-                navigation={true}
-                modules={[Autoplay, Pagination, Navigation]}
-                className="relative h-[100dvh] w-full !px-7"
-              >
-                {sliders.map((slider, index) => (
-                  <SwiperSlide
-                    key={index}
-                    className="!flex flex-col-reverse md:flex-row justify-center md:!justify-around !items-center gap-10"
-                  >
-                    <span className="text-5xl text-white font-bold text-center md:text-left">
-                      {slider.title}
-                    </span>
-                    <img
-                      src={slider.image}
-                      alt="imagen prueba"
-                      className="w-[400px] max-w-full"
-                    />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-          ) : (
-              <div className="flex justify-center items-center h-[100dvh] w-full">
-                <h1 className="text-5xl font-bold text-white text-center text-shadow-lg">
-                  No hay sliders disponibles
-                </h1>
-              </div>
-          )}
-                
-      </section>
+      <Hero />
       <section className="bg-white w-[80%] max-w-[1000px] mx-auto p-5 my-22">
         <div className="grid place-items-center items-center justify-center gap-6 text-center">
           <div>
@@ -167,7 +125,10 @@ export default function Home() {
               )
               :
               (
-                <h2 className="text-center font-bold text-4xl"> Aun no tenemos categorias disponibles </h2>
+                <>
+                <div/>
+                <h2 className="text-center text-2xl text-gray-800"> Aun no tenemos categorias disponibles </h2>
+                </>
               )
             }
             </section>
