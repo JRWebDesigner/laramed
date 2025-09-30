@@ -114,7 +114,7 @@ export default function Header() {
   // Si no hay links cargados aún, mostrar un header básico
   if (links.length === 0) {
     return (
-      <header className="fixed w-full bg-white shadow-md z-50 h-[80px] p-3">
+      <header className="sticky w-full bg-white shadow-md z-50 h-[80px] p-3 top-0">
         <div className="container mx-auto flex justify-between items-center">
           <Link href="/"><img src='/logo.png' className='relative z-50 h-12' alt="Logo" /></Link>
           <div className="hidden md:block">
@@ -126,7 +126,7 @@ export default function Header() {
   }
 
   return (
-    <header className="fixed w-full bg-white shadow-md z-50 h-[80px] p-3">
+    <header className="sticky w-full bg-white shadow-md z-50 h-[80px] p-3 top-0">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/"><img src='/logo.png' className='relative z-50 h-12' alt="Logo" /></Link>
         <button 

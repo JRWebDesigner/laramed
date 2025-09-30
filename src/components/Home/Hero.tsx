@@ -48,10 +48,10 @@ export default function Hero(){
                 ))}
               </Swiper>
           ) : (
-              <div className="flex justify-center items-center h-[100dvh] w-full">
-                <h1 className="text-5xl font-bold text-white text-center text-shadow-lg">
+              <div className="flex justify-center items-center h-[100dvh] w-full z-10">
+                <span className="text-5xl font-bold text-white text-center text-shadow-lg">
                   No hay sliders disponibles
-                </h1>
+                </span>
               </div>
           )}
       </section>

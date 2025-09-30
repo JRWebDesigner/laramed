@@ -1,4 +1,3 @@
-// app/productos/page.js
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -6,7 +5,6 @@ import Link from 'next/link';
 import { getCategories, getProducts } from '@/lib/getQueries';
 
 export default async function Productos() {
-  // Obtener categorías y productos desde Sanity
   const [categoriesData, productsData] = await Promise.all([
     getCategories(),
     getProducts()
@@ -31,7 +29,6 @@ export default async function Productos() {
               Todos Nuestros Productos
             </h2>
             
-            {/* Grid de productos */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {productos.map((producto) => (
                 <Link 
@@ -42,19 +39,21 @@ export default async function Productos() {
                   <img 
                     src={producto.imagenPrincipal || '/logo.png'} 
                     alt={producto.nombre} 
-                    className="w-full h-48 object-cover" 
+                    className="w-full h-48 object-contain" 
                   />
                   <div className="p-4 text-center w-full">
                     <h2 className="text-lg md:text-xl font-semibold text-gray-800">
                       {producto.nombre}
                     </h2>
                   </div>
+                  {producto.modelo && (
+                    <span>{producto.modelo}</span>
+                  )}
                 </Link>
               ))}
             </div>
           </div>
           
-          {/* Acordeón de categorías */}
           <div className="md:sticky md:top-24 md:h-fit">
             <Accordion defaultExpanded>
               <AccordionSummary

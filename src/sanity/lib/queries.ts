@@ -13,6 +13,19 @@ export const PRODUCTS_QUERY = defineQuery(`*[_type == "producto"]{
         "slug": slug.current
     }
 }`);
+export const PRODUCT_QUERY = defineQuery(`*[_type == "producto" && slug.current == $slug][0]{
+    _id,
+    nombre,
+    "slug": slug.current,
+    "imagenPrincipal": imagenPrincipal.asset->url,
+    "imagenes": imagenes[].asset->url,
+    destacado,
+    descripcion,
+    categoria->{
+        nombre,
+        "slug": slug.current
+    }
+}`);
 
 export const CATEGORIES_QUERY = defineQuery(`*[_type == "categoria"]{
       _id,

@@ -86,13 +86,16 @@ export default async function CategoriaPage({ params }) {
                     <img 
                       src={producto.imagenPrincipal || '/logo.png'} 
                       alt={producto.nombre} 
-                      className="w-full h-48 object-cover" 
+                      className="w-full h-48 object-contain" 
                     />
                     <div className="p-4 text-center w-full">
                       <h2 className="text-lg md:text-xl font-semibold text-gray-800">
                         {producto.nombre}
                       </h2>
                     </div>
+                    {producto.modelo && (
+                        <span>{producto.modelo}</span>
+                    )}
                   </Link>
                 ))}
               </div>
