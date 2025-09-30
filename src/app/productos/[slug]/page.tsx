@@ -1,3 +1,4 @@
+// app/productos/producto/[slug]/page.tsx
 import { PortableText } from 'next-sanity';
 import { getProduct, getProducts } from '@/lib/getQueries';
 import Destacados from '@/components/Destacados';
@@ -14,8 +15,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const product = await getProduct(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const product = await getProduct(slug);
   
   if (!product) {
     return {
@@ -52,8 +54,9 @@ function WhatsAppButton({ nombre }: { nombre: string }) {
   );
 }
 
-export default async function ProductoPage({ params }: { params: { slug: string } }) {
-  const product = await getProduct(params.slug);
+export default async function ProductoPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const product = await getProduct(slug);
   
   if (!product) {
     notFound();
@@ -62,7 +65,7 @@ export default async function ProductoPage({ params }: { params: { slug: string 
   const todasLasImagenes = [
     product.imagenPrincipal,
     ...(product.imagenes || [])
-  ].filter(Boolean); 
+  ].filter(Boolean);
 
   return (
     <>
