@@ -92,16 +92,6 @@ export default async function CategoriaPage({ params }) {
                       <h2 className="text-lg md:text-xl font-semibold text-gray-800">
                         {producto.nombre}
                       </h2>
-                      {producto.descripcion && (
-                        <p className="text-gray-600 mt-2 text-sm line-clamp-2">
-                          {producto.descripcion}
-                        </p>
-                      )}
-                      {producto.destacado && (
-                        <span className="inline-block mt-2 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded">
-                          Destacado
-                        </span>
-                      )}
                     </div>
                   </Link>
                 ))}
