@@ -2,9 +2,11 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { getCategories } from '@/lib/getQueries';
+import { urlFor } from '@/sanity/lib/client'; // Asegúrate de tener esto configurado
 
-
-const links = [
+// Links estáticos que no dependen de las categorías
+const staticLinks = [
   {
     name: 'Inicio',
     href: '/'
@@ -12,37 +14,6 @@ const links = [
   {
     name: 'Sobre Nosotros',
     href: '/sobre-nosotros'
-  },
-  {
-    name: 'Productos',
-    href: '/productos',
-    submenu: [
-      {
-        name: 'categoria 1',
-        href: '/',
-        image: '/logo2.jpg'
-      },
-      {
-        name: 'categoria 2',
-        href: '/',
-        image: '/logo2.jpg'
-      },
-      {
-        name: 'categoria 3',
-        href: '/',
-        image: '/logo2.jpg'
-      },
-      {
-        name: 'categoria 4',
-        href: '/',
-        image: '/logo2.jpg'
-      },
-      {
-        name: 'categoria 5',
-        href: '/',
-        image: '/logo2.jpg'
-      }
-    ]
   },
   {
     name: 'Noticias',
@@ -58,8 +29,59 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [links, setLinks] = useState([]);
   const pathname = usePathname();
- 
+
+  // Cargar categorías desde Sanity
+  useEffect(() => {
+    async function fetchCategories() {
+      try {
+        const data = await getCategories();
+        // Tu función devuelve {categories}, así que accedemos a data.categories
+        const categoriesData = data.categories || [];
+        setCategories(categoriesData);
+        
+        // Construir los links combinando los estáticos con las categorías dinámicas
+        const dynamicLinks = [
+          ...staticLinks.slice(0, 2), // Inicio y Sobre Nosotros
+          {
+            name: 'Productos',
+            href: '/productos',
+            submenu: categoriesData.map(categoria => ({
+              name: categoria.nombre, // Usamos 'nombre' de tu schema
+              href: `/categorias/${categoria.slug}`, // Ajusta la ruta según necesites
+              image: categoria.imagen ? urlFor(categoria.imagen).url() : '/logo2.jpg'
+            }))
+          },
+          ...staticLinks.slice(2) // Noticias y Contactos
+        ];
+        
+        setLinks(dynamicLinks);
+      } catch (error) {
+        console.error('Error cargando categorías:', error);
+        // En caso de error, usar links por defecto
+        setLinks([
+          ...staticLinks.slice(0, 2),
+          {
+            name: 'Productos',
+            href: '/productos',
+            submenu: [
+              {
+                name: 'Todos los Productos',
+                href: '/productos',
+                image: '/logo2.jpg'
+              }
+            ]
+          },
+          ...staticLinks.slice(2)
+        ]);
+      }
+    }
+
+    fetchCategories();
+  }, []);
+
   useEffect(() => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -89,10 +111,24 @@ export default function Header() {
     }
   };
 
+  // Si no hay links cargados aún, mostrar un header básico
+  if (links.length === 0) {
+    return (
+      <header className="fixed w-full bg-white shadow-md z-50 h-[80px] p-3">
+        <div className="container mx-auto flex justify-between items-center">
+          <Link href="/"><img src='/logo.png' className='relative z-50 h-12' alt="Logo" /></Link>
+          <div className="hidden md:block">
+            <span className="text-gray-500">Cargando...</span>
+          </div>
+        </div>
+      </header>
+    );
+  }
+
   return (
     <header className="fixed w-full bg-white shadow-md z-50 h-[80px] p-3">
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" ><img src='/logo.png' className='relative z-50 h-12' alt="Logo" /></Link>
+        <Link href="/"><img src='/logo.png' className='relative z-50 h-12' alt="Logo" /></Link>
         <button 
           className="md:hidden p-2 text-gray-700 focus:outline-none"
           onClick={toggleMenu}
@@ -106,8 +142,10 @@ export default function Header() {
         <nav className="hidden md:block relative h-full">
           <ul className="flex justify-around items-center gap-8 h-full">
             {links.map((link, index) => {
-              // Detecta si el link es activo
-              const isActive = link.href === pathname || (link.submenu && link.href === '/productos' && pathname.startsWith('/productos'));
+              const isActive = link.href === pathname || 
+                (link.submenu && link.href === '/productos' && 
+                 (pathname.startsWith('/productos') || pathname.startsWith('/categorias')));
+              
               return (
                 <li 
                   key={index} 
@@ -127,12 +165,12 @@ export default function Header() {
                         </svg>
                       </Link>
                       
-                      {isProductsOpen && (
+                      {isProductsOpen && link.submenu.length > 0 && (
                         <div className="fixed left-0 top-[60px] w-screen bg-white shadow-xl py-6 z-40 mt-2 border-t border-gray-200">
                           <div className="container mx-auto">
-                            <div className="grid grid-cols-5 gap-6">
+                            <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-${Math.min(link.submenu.length, 5)} gap-6`}>
                               {link.submenu.map((item, idx) => (
-                                <Link key={idx} href={item.href}>
+                                <Link key={idx} href={item.href} onClick={() => setIsProductsOpen(false)}>
                                   <div className="flex flex-col items-center p-3 rounded-lg hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-gray-200">
                                     <div className="w-20 h-20 bg-gray-100 rounded-full mb-3 overflow-hidden flex items-center justify-center">
                                       {item.image ? (
@@ -191,7 +229,10 @@ export default function Header() {
                       <div className="bg-gray-50 px-4 py-3">
                         <div className="grid grid-cols-2 gap-3">
                           {link.submenu.map((item, idx) => (
-                            <Link key={idx} href={item.href} onClick={() => setIsMenuOpen(false)}>
+                            <Link key={idx} href={item.href} onClick={() => {
+                              setIsMenuOpen(false);
+                              setIsProductsOpen(false);
+                            }}>
                               <div className="flex flex-col items-center p-2 rounded hover:bg-gray-200 transition-colors duration-200">
                                 <div className="w-12 h-12 bg-gray-200 rounded-full mb-1 overflow-hidden flex items-center justify-center">
                                   {item.image ? (

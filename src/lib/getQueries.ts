@@ -1,10 +1,7 @@
 import {client} from '@/sanity/lib/client'
 import { type SanityDocument } from "next-sanity";
 
-import {PRODUCTS_QUERY} from '@/sanity/lib/queries'
-import {CATEGORIES_QUERY} from '@/sanity/lib/queries'
-import {CARRUSEL_QUERY} from '@/sanity/lib/queries'
-import {PUBLICACIONES_QUERY} from '@/sanity/lib/queries'
+import {PRODUCTS_QUERY,CATEGORIES_QUERY,CARRUSEL_QUERY,PUBLICACIONES_QUERY,PUBLICACIONES_QUERY,PRODUCTS_BY_CATEGORY_QUERY} from '@/sanity/lib/queries'
 
 export async function getProducts() {
   const products = await client.fetch<SanityDocument[]>(PRODUCTS_QUERY)
@@ -24,4 +21,8 @@ export async function getCarrusel() {
 export async function getPublicaciones() {
   const publicaciones = await client.fetch<SanityDocument[]>(PUBLICACIONES_QUERY)
   return {publicaciones}
+}
+export async function getProductsByCategory(categorySlug) {
+  const products = await client.fetch<SanityDocument[]>(PRODUCTS_BY_CATEGORY_QUERY, { categorySlug });
+  return products;
 }

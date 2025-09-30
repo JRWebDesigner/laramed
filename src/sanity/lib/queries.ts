@@ -1,18 +1,18 @@
 import {defineQuery} from 'next-sanity'
 
 export const PRODUCTS_QUERY = defineQuery(`*[_type == "producto"]{
-      _id,
-      nombre,
-      "slug": slug.current,
-      "imagenPrincipal": imagenPrincipal.asset->url,
-      "imagenes": imagenes[].asset->url,
-      destacado,
-      descripcion,
-      categoria->{
+    _id,
+    nombre,
+    "slug": slug.current,
+    "imagenPrincipal": imagenPrincipal.asset->url,
+    "imagenes": imagenes[].asset->url,
+    destacado,
+    descripcion,
+    categoria->{
         nombre,
-        "slug": slug.current,
-      }
-    }`);
+        "slug": slug.current
+    }
+}`);
 
 export const CATEGORIES_QUERY = defineQuery(`*[_type == "categoria"]{
       _id,
@@ -34,3 +34,17 @@ export const PUBLICACIONES_QUERY = defineQuery(`*[_type == "publicacion"] | orde
     descripcion,
     fecha
   }`);
+  
+  export const PRODUCTS_BY_CATEGORY_QUERY = defineQuery(`*[_type == "producto" && categoria->slug.current == $categorySlug]{
+    _id,
+    nombre,
+    "slug": slug.current,
+    "imagenPrincipal": imagenPrincipal.asset->url,
+    "imagenes": imagenes[].asset->url,
+    destacado,
+    descripcion,
+    categoria->{
+        nombre,
+        "slug": slug.current
+    }
+}`);
