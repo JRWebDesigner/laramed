@@ -51,19 +51,7 @@ export const producto = defineType({
     select: {
       title: 'nombre',
       media: 'imagenPrincipal',
-      destacado: 'destacado',
       categoria: 'categoria->nombre'
-    },
-    prepare({ title, media, destacado, categoria }) {
-      const parts: string[] = []
-      if (categoria) parts.push(categoria)
-      if (destacado) parts.push('⭐ Destacado')
-
-      return {
-        title: title || 'Sin nombre',
-        subtitle: parts.join(' • '),
-        media
-      }
     }
   }
 })

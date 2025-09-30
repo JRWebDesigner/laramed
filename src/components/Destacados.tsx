@@ -10,10 +10,13 @@ import { Autoplay, Pagination, Navigation  } from 'swiper/modules';
 export default function Destacados(){
   const [destacados, setDestacados] = useState([])
   useEffect(()=>{
-    async function fechData(){
+    async function fetchData(){
         const data = await getProducts()
         const setDestacados = data.products.filter(product => product.destacado === true)
+        console.log("data: "+data)
+        console.log(destacados)
     }
+    fetchData();
   },[])
   return(
     <section className="container mx-auto flex items-center flex-col my-22 px-5">
