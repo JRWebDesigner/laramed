@@ -5,9 +5,9 @@ export const PRODUCTS_QUERY = defineQuery(`*[_type == "producto"]{
       nombre,
       "slug": slug.current,
       "imagenPrincipal": imagenPrincipal.asset->url,
+      "imagenes": imagenes[].asset->url,
       destacado,
       descripcion,
-      "imagenes": imagenes[].asset->url,
       categoria->{
         nombre,
         "slug": slug.current,
