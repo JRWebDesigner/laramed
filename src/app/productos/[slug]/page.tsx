@@ -27,11 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   
   return {
     title: `Productos - Laramed`,
-    description: product.descripcion ? 
-      (typeof product.descripcion === 'string' ? 
-        product.descripcion.substring(0, 160) : 
-        'Producto médico de calidad') : 
-      'Producto médico de calidad',
+    description:'Producto médico de calidad' 
   };
 }
 
