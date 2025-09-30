@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
   
   return {
-    title: `${product.nombre} - Laramed`,
+    title: `Productos - Laramed`,
     description: product.descripcion ? 
       (typeof product.descripcion === 'string' ? 
         product.descripcion.substring(0, 160) : 
