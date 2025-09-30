@@ -1,7 +1,7 @@
 import {client} from '@/sanity/lib/client'
 import { type SanityDocument } from "next-sanity";
 
-import {PRODUCTS_QUERY,CATEGORIES_QUERY,CARRUSEL_QUERY,PUBLICACIONES_QUERY,PUBLICACIONES_QUERY,PRODUCTS_BY_CATEGORY_QUERY} from '@/sanity/lib/queries'
+import {PRODUCTS_QUERY,CATEGORIES_QUERY,CARRUSEL_QUERY,PUBLICACIONES_QUERY,PRODUCTS_BY_CATEGORY_QUERY} from '@/sanity/lib/queries'
 
 export async function getProducts() {
   const products = await client.fetch<SanityDocument[]>(PRODUCTS_QUERY)
