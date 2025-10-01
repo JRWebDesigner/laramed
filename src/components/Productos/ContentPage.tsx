@@ -66,7 +66,7 @@ export default function ContentPage( {slug}: {slug:string} ){
             )}
           </div>
 
-          <WhatsAppButton nombre={product.nombre} />
+          <WhatsAppButton name={product.nombre} />
 
           <div className="mt-4 p-4 bg-blue-50 rounded-lg">
             <h3 className="font-semibold text-blue-900 mb-2">¿Necesitas asesoría técnica?</h3>
