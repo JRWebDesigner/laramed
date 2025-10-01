@@ -19,13 +19,13 @@ export default function Footer(){
       <div>
         <h2 className="font-bold text-xl">REDES SOCIALES</h2>
         <div className="flex gap-6 items-center font-bold">
-          <a>
+          <a href="https://wa.link/yfn51c">
             <FaWhatsapp className="h-12"/>
           </a>
-          <a>
+          <a href='https://www.tiktok.com/@laramedoficial?_t=ZM-900M5z0n944&_r=1'>
             <FaInstagram className="h-12" />
           </a>
-          <a>
+          <a href="https://www.facebook.com/share/15VhJR85KF/">
             <FaFacebook className="h-12"/>
           </a>
         </div>
