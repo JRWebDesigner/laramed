@@ -14,7 +14,7 @@ interface ProductoCarouselProps {
 
 export default function ProductoCarousel({ imagenes, nombre }: ProductoCarouselProps) {
   return (
-    <div className="w-full max-w-lg">
+    <div className="!w-[80%] md:w-full max-w-lg">
       {imagenes.length > 0 ? (
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
