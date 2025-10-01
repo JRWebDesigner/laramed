@@ -27,17 +27,18 @@ function WhatsAppButton({ name }: { name: string }) {
 
 export default function ContentPage( {slug}: {slug:string} ){
   const [product, setProduct] = useState([])
+  const [loading, serLoaging] = useState(false)
   useEffect(()=>{
     async function fetchData(){
       const data = await getProduct(slug);
-      setProduct(data)
+      setProduct(data || [])
     }
     fetchData()
   },[])
   return(
         <div className="flex flex-col gap-6 w-full">
           <h1 className="text-blue-950 font-bold text-4xl md:text-5xl">
-            {product?.nombre}
+            {product.nombre}
           </h1>
           
           {product.categoria && (
