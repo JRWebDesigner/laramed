@@ -9,8 +9,11 @@ export default function ProductsCat({slug, categoria}: { slug: string }){
     async function fetchData(){
       const data = await getProductsByCategory(slug);
       setProductosCategoria(data)
+      console.log(data)
     }
+    fetchData()
   },[])
+  
   return(
     <>
             <h2 className="text-2xl font-bold text-blue-950 mb-6">

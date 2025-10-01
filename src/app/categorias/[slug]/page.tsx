@@ -4,7 +4,6 @@ import { getCategories } from '@/lib/getQueries';
 import AccordionCategorias from '@/components/Productos/AccordionCategorias'
 import ProductsCat from '@/components/Productos/ProductsCat'
 
-// Generar páginas estáticas para cada categoría
 export async function generateStaticParams() {
   const categoriesData = await getCategories();
   const categorias = categoriesData.categories || [];
@@ -14,21 +13,16 @@ export async function generateStaticParams() {
   }));
 }
 
-// Metadata dinámica para SEO
-export async function generateMetadata({ params }) {
-  const categoriesData = await getCategories();
-  const categoria = categoriesData.categories.find(
-    cat => cat.slug === params.slug
-  );
-  
+export function generateMetadata() {
+
   return {
-    title: `${categoria?.nombre || 'Categoría'} - Laramed`,
-    description: `Productos de ${categoria?.nombre || 'esta categoría'} en Laramed`,
+    title: `Descubre todas nuestras categorias- Laramed`,
+    description: `Productos de calidad en Laramed`,
   };
 }
 
 export default async function CategoriaPage({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
   
   const categoriesData = await getCategories();
   const categorias = categoriesData.categories || [];
