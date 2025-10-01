@@ -5,7 +5,6 @@ import ProductoCarousel from '@/components/Productos/ProductoCarousel';
 import {useState, useEffect} from 'react'
 import { getProduct } from '@/lib/getQueries';
 
-
 function WhatsAppButton({ name }: { name: string }) {
   const generarEnlaceWhatsApp = () => {
     const numero = '59169722332';
@@ -25,65 +24,88 @@ function WhatsAppButton({ name }: { name: string }) {
   );
 }
 
-export default function ContentPage( {slug}: {slug:string} ){
-  const [product, setProduct] = useState([])
-  const [loading, serLoading] = useState(true)
-  useEffect(()=>{
-    async function fetchData(){
-      setLoading(true)
-      const data = await getProduct(slug);
-      setProduct(data || [])
-      setLoading(false)
+// Define el tipo del producto para mejor tipado
+interface Product {
+  nombre: string;
+  categoria?: {
+    slug: string;
+    nombre: string;
+  };
+  descripcion?: string | any;
+}
+
+export default function ContentPage({ slug }: { slug: string }) {
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        setLoading(true);
+        setError(null);
+        const data = await getProduct(slug);
+        setProduct(data || null);
+      } catch (err) {
+        setError('Error al cargar el producto');
+        console.error('Error fetching product:', err);
+      } finally {
+        setLoading(false);
+      }
     }
-    fetchData()
-  },[])
-  return(
+    
+    fetchData();
+  }, [slug]);
 
-    { loading ? (
+  if (loading) {
+    return <p>Cargando...</p>;
+  }
 
-      <p> Cargando... </p>
-    ):(
+  if (error) {
+    return <p className="text-red-600">{error}</p>;
+  }
+
+  if (!product) {
+    return <p>Producto no encontrado</p>;
+  }
+
+  return (
     <div className="flex flex-col gap-6 w-full">
-          <h1 className="text-blue-950 font-bold text-4xl md:text-5xl">
-            {product.nombre}
-          </h1>
-          
-          {product.categoria && (
-            <Link 
-              href={`/categorias/${product.categoria.slug}`}
-              className="text-blue-600 hover:text-blue-800 font-medium text-lg"
-            >
-              Categoría: {product.categoria.nombre}
-            </Link>
-          )}
+      <h1 className="text-blue-950 font-bold text-4xl md:text-5xl">
+        {product.nombre}
+      </h1>
+      
+      {product.categoria && (
+        <Link 
+          href={`/categorias/${product.categoria.slug}`}
+          className="text-blue-600 hover:text-blue-800 font-medium text-lg"
+        >
+          Categoría: {product.categoria.nombre}
+        </Link>
+      )}
 
-          <div className="text-gray-700 leading-relaxed prose prose-xl">
-            {product.descripcion ? (
-              typeof product.descripcion === 'string' ? (
-                <p>{product.descripcion}</p>
-              ) : (
-                <PortableText 
-                  value={product.descripcion}
-                  
-                />
-              )
-            ) : (
-              <p>
-                Cargando Contenido ...
-              </p>
-            )}
-          </div>
+      <div className="text-gray-700 leading-relaxed prose prose-xl">
+        {product.descripcion ? (
+          typeof product.descripcion === 'string' ? (
+            <p>{product.descripcion}</p>
+          ) : (
+            <PortableText 
+              value={product.descripcion}
+            />
+          )
+        ) : (
+          <p>No hay descripción disponible para este producto.</p>
+        )}
+      </div>
 
-          <WhatsAppButton name={product.nombre} />
+      <WhatsAppButton name={product.nombre} />
 
-          <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-            <h3 className="font-semibold text-blue-900 mb-2">¿Necesitas asesoría técnica?</h3>
-            <p className="text-blue-800 text-sm">
-              Nuestros especialistas están disponibles para resolver tus dudas sobre este producto.
-            </p>
-          </div>
-        </div>
-    )
-   }        
-  )
+      <div className="mt-4 p-4 bg-blue-50 rounded-lg">
+        <h3 className="font-semibold text-blue-900 mb-2">¿Necesitas asesoría técnica?</h3>
+        <p className="text-blue-800 text-sm">
+          Nuestros especialistas están disponibles para resolver tus dudas sobre este producto.
+        </p>
+      </div>
+    </div>
+  );
 }
