@@ -6,10 +6,10 @@ import {useState, useEffect} from 'react'
 import { getProduct } from '@/lib/getQueries';
 
 
-function WhatsAppButton({ nombre }: { nombre: string }) {
+function WhatsAppButton({ name }: { name: string }) {
   const generarEnlaceWhatsApp = () => {
     const numero = '59169722332';
-    const mensaje = `Hola, estoy interesado en el producto: ${nombre}. ¿Podrían darme más información?`;
+    const mensaje = `Hola, estoy interesado en el producto: ${name}. ¿Podrían darme más información?`;
     return `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
   };
 
