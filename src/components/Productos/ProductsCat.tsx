@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { getProductsByCategory } from '@/lib/getQueries';
 
-export default function ProductsCat({slug, categoria}: { slug: string }){
+export default function ProductsCat({slug, categoria}: { slug: string; categoria:string }){
   const [ productosCategoria, setProductosCategoria ] = useState([])
   useEffect(()=>{
     async function fetchData(){
