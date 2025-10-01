@@ -1,9 +1,17 @@
+"use client"
 import Link from 'next/link'
 import {getCategories} from '@/lib/getQueries'
-
-export default async function Categories(){
-  const data = await getCategories();
-  const categories = data.categories;
+import {useState, useEffect} from 'react'
+export default function Categories(){
+  const [categories, setCategories] = useState([])
+  useEffect(()=>{
+    async function fetchData(){
+      const data = await getCategories();
+      setCategories(data.categories || []);
+    }
+    fetchData()
+  },[])
+  
   return(
     <section className="bg-gray-50 my-22 px-5">
           <div className="container mx-auto py-5">

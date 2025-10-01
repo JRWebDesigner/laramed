@@ -1,8 +1,17 @@
+"use client"
+import {useState, useEffect} from 'react'
 import { getPublicaciones } from '@/lib/getQueries';
 
-export default async function Novedades() {
-  const data = await getPublicaciones();
-  const noticias = data.publicaciones;
+export default  function Novedades() {
+  const [moticias, setNoticias] = useState([])
+  useEffect(()=>{
+    async function fetchData(){
+      const data = await getPublicaciones();
+      setNoticias(data.publicaciones || []);
+    }
+    fetchData()
+  },[])
+ 
 
   return (
     <section className="relative max-w-5xl mx-auto my-22 px-5">
