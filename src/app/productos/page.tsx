@@ -1,18 +1,24 @@
+"use client"
+import {useState, useEffect} from 'react'
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Link from 'next/link';
 import { getCategories, getProducts } from '@/lib/getQueries';
 
-export default async function Productos() {
-  const [categoriesData, productsData] = await Promise.all([
-    getCategories(),
-    getProducts()
-  ]);
-  
-  const categorias = categoriesData.categories || [];
-  const productos = productsData.products || [];
-
+export default function Productos() {
+  const [categorias, setCategorias] = useState([])
+  const [productos, setProductos] = useState([])
+  useEffect(()=>{
+    async function fetchData(){
+      const categoriesData = await getCategories()
+      setCategorias(categoriesData.categories || [])
+      
+      const productsData = await getProducts()
+      setProductos(productsData.products || [])
+    } 
+    fetchData()   
+  },[])
   return(
     <>
       <section className="relative bg-[url('/banner.jpg')] h-[70dvh] md:h-[80dvh] max-h-[900px] bg-cover bg-fixed flex justify-center items-center text-white">
