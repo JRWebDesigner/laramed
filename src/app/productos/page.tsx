@@ -6,6 +6,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Link from 'next/link';
 import { getCategories, getProducts } from '@/lib/getQueries';
 
+
 export default function Productos() {
   const [categorias, setCategorias] = useState([])
   const [productos, setProductos] = useState([])
@@ -23,8 +24,8 @@ export default function Productos() {
     <>
       <section className="relative bg-[url('/banner.jpg')] h-[70dvh] md:h-[80dvh] max-h-[900px] bg-cover bg-fixed flex justify-center items-center text-white">
         <div className="absolute bg-black h-full w-full opacity-40 z-0"/>
-        <h1 className="z-20 font-bold text-center md:text-left text-4xl md:text-6xl container mx-auto text-shadow-lg">
-          Laramed: Productos y Equipos Médicos para Profesionales de la Salud
+        <h1 className="z-20 font-bold text-center text-4xl md:text-6xl container mx-auto text-shadow-lg">
+          Laramed S.R.L: Productos y Equipos Médicos para Profesionales de la Salud
         </h1>
       </section>  
       

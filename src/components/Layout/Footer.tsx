@@ -1,4 +1,4 @@
-import { FaWhatsapp, FaFacebook, FaInstagram } from 'react-icons/fa';
+import { FaWhatsapp, FaFacebook, FaTiktok } from 'react-icons/fa';
 
 export default function Footer(){
   return(
@@ -12,9 +12,6 @@ export default function Footer(){
         <h3>
             Telefono:
         </h3>
-        <h3>
-            Horario de atencion:
-        </h3>
       </div>
       <div>
         <h2 className="font-bold text-xl">REDES SOCIALES</h2>
@@ -23,7 +20,7 @@ export default function Footer(){
             <FaWhatsapp className="h-12"/>
           </a>
           <a href='https://www.tiktok.com/@laramedoficial?_t=ZM-900M5z0n944&_r=1'>
-            <FaInstagram className="h-12" />
+            <FaTiktok className="h-12" />
           </a>
           <a href="https://www.facebook.com/share/15VhJR85KF/">
             <FaFacebook className="h-12"/>

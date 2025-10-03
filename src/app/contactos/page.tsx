@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contactanos - Laramed S.R.L: Líder en Importación de Equipos Médicos en Bolivia",
+  description: "Nuestra mision es ser un referente nacional, en suministro de equipo e insumo medico de alta tecnología, garantizando la calidad y soporte técnico oportuno, trabajando siempre el cuidado de la salud de los pacientes de nuestros clientes.",
+};
+
 export default function Contactos(){
   return(
     <>

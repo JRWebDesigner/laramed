@@ -174,7 +174,7 @@ export default function Header() {
                                   <div className="flex flex-col items-center p-3 rounded-lg hover:bg-gray-50 transition-all duration-200 border border-transparent hover:border-gray-200">
                                     <div className="w-20 h-20 bg-gray-100 rounded-full mb-3 overflow-hidden flex items-center justify-center">
                                       {item.image ? (
-                                        <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                                        <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
                                       ) : (
                                         <div className="w-full h-full flex items-center justify-center bg-blue-100 text-blue-800 text-xs">
                                           <span>Imagen</span>

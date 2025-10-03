@@ -1,4 +1,4 @@
-
+import type { Metadata } from "next";
 import Link from 'next/link'
 import { getCategories } from '@/lib/getQueries';
 import AccordionCategorias from '@/components/Productos/AccordionCategorias'
@@ -13,13 +13,12 @@ export async function generateStaticParams() {
   }));
 }
 
-export function generateMetadata() {
 
-  return {
-    title: `Descubre todas nuestras categorias- Laramed`,
-    description: `Productos de calidad en Laramed`,
-  };
-}
+
+export const metadata: Metadata = {
+  title: `Categorias - Laramed S.R.L: Líder en Importación de Equipos Médicos en Bolivia`,
+  description: "Nuestra mision es ser un referente nacional, en suministro de equipo e insumo medico de alta tecnología, garantizando la calidad y soporte técnico oportuno, trabajando siempre el cuidado de la salud de los pacientes de nuestros clientes.",
+};
 
 export default async function CategoriaPage({ params }) {
   const { slug } = await params;

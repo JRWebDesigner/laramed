@@ -21,7 +21,7 @@ export default function Categories(){
               categories && categories.length > 0 ?
               (
                  categories.map((category,index)=>(
-                  <Link key={index} href={category.slug} className={`cat ${index/2==0? 'bg-blue-950': 'bg-blue-400'} h-[300px] flex flex-col justify-center items-center text-white font-semibol text-3xl`}>
+                  <Link key={index} href={`/categorias/${category.slug}`} className={`cat ${index/2==0? 'bg-blue-950': 'bg-blue-400'} h-[300px] flex flex-col justify-center items-center text-white font-semibol text-3xl`}>
                    <img src={category.imagen} className="max-h-[200px] w-auto max-w-[80%]" />
                    <h3>{category.nombre}</h3>
                  </Link> 
