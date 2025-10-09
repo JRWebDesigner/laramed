@@ -96,6 +96,9 @@ export default function ContentPage({ slug }: { slug: string }) {
         ) : (
           <p>No hay descripción disponible para este producto.</p>
         )}
+        {product.tabla?(
+           <img src={product.tabla} alt={product.nombre} className="max-w-[90%] h-auto"/>
+        )}
       </div>
 
       <WhatsAppButton name={product.nombre} />
