@@ -32,6 +32,7 @@ interface Product {
     nombre: string;
   };
   descripcion?: string | any;
+  tabla?:string;
 }
 
 export default function ContentPage({ slug }: { slug: string }) {
