@@ -8,6 +8,7 @@ export const PRODUCTS_QUERY = defineQuery(`*[_type == "producto"]{
     "imagenes": imagenes[].asset->url,
     destacado,
     descripcion,
+    "tabla": tabla.asset->url,
     categoria->{
         nombre,
         "slug": slug.current
@@ -21,6 +22,7 @@ export const PRODUCT_QUERY = defineQuery(`*[_type == "producto" && slug.current 
     "imagenes": imagenes[].asset->url,
     destacado,
     descripcion,
+    "tabla": tabla.asset->url,
     categoria->{
         nombre,
         "slug": slug.current
@@ -55,6 +57,7 @@ export const PUBLICACIONES_QUERY = defineQuery(`*[_type == "publicacion"] | orde
     "imagenPrincipal": imagenPrincipal.asset->url,
     "imagenes": imagenes[].asset->url,
     destacado,
+    "tabla": tabla.asset->url,
     descripcion,
     categoria->{
         nombre,

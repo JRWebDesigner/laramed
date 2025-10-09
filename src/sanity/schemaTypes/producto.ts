@@ -41,6 +41,11 @@ export const producto = defineType({
       type: 'blockContent'
     }),
     defineField({
+      name: 'tabla',
+      title: 'Tabla',
+      type: 'image'
+    }),
+    defineField({
       name: 'categoria',
       title: 'Categoría',
       type: 'reference',

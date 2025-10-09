@@ -32,6 +32,7 @@ interface Product {
     nombre: string;
   };
   descripcion?: string | any;
+  tabla?:string;
 }
 
 export default function ContentPage({ slug }: { slug: string }) {
@@ -96,6 +97,9 @@ export default function ContentPage({ slug }: { slug: string }) {
         ) : (
           <p>No hay descripción disponible para este producto.</p>
         )}
+        {product.tabla?(
+           <img src={product.tabla} alt={product.nombre} className="max-w-[90%] h-auto object-contain"/>
+        ):(<div/>)}
       </div>
 
       <WhatsAppButton name={product.nombre} />
