@@ -98,7 +98,7 @@ export default function ContentPage({ slug }: { slug: string }) {
         )}
         {product.tabla?(
            <img src={product.tabla} alt={product.nombre} className="max-w-[90%] h-auto"/>
-        )}
+        ):(<div/>)}
       </div>
 
       <WhatsAppButton name={product.nombre} />
