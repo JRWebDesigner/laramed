@@ -2,15 +2,18 @@ import { FaWhatsapp, FaFacebook, FaTiktok } from 'react-icons/fa';
 
 export default function Footer(){
   return(
-    <footer className="bg-blue-950 h-[50dvh] grid items-center md:grid-cols-3 text-white font-semibold place-items-center">
+    <footer className="bg-[#15599a] h-[50dvh] grid items-center md:grid-cols-3 text-white font-semibold place-items-center">
       <img src="/logob.png" className="w-[300px]" />
       <div>
         <h2 className="font-bold text-xl">INFORMACION</h2>
         <h3>
-            Direccion:
+            Direccion: Miraflores, Av. Villalobos, Edif. Villalobos, Bloque A of. 1 La Paz - Bolivia
         </h3>
         <h3>
-            Telefono:
+            Telefono: 2263451
+        </h3>
+        <h3>
+            Celular: +591 69722332
         </h3>
       </div>
       <div>
