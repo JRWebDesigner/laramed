@@ -8,6 +8,7 @@ declare global {
     imagenes?: string[];
     destacado?: boolean;
     descripcion?: any;
+    tabla?: string;
     categoria?: {
       nombre: string;
       slug: string;
