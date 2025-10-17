@@ -40,6 +40,7 @@ export const CARRUSEL_QUERY = defineQuery(`*[_type == "carruselPrincipal"]{
     _id,
     slideDescription,
     "imagen": imagen.asset->url
+    "logo": logo.asset->url
   }`);
 
 export const PUBLICACIONES_QUERY = defineQuery(`*[_type == "publicacion"] | order(fecha desc){

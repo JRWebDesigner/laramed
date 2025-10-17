@@ -34,16 +34,22 @@ export default function Hero(){
               {sliders.map((slider, index) => (
                 <SwiperSlide
                   key={index}
-                  className="!flex flex-col-reverse md:flex-row justify-center md:!justify-around !items-center gap-10"
+                  className="!flex flex-col-reverse md:flex-row justify-center md:!justify-around !items-center gap-7"
                 >
-                  <span className="text-5xl text-white font-bold text-center md:text-left">
+                  <span className="text-5xl text-white font-bold text-center md:text-center">
                     {slider.slideDescription}
                   </span>
-                  <img
+                  <div className="flex flex-col gap-2 items-center justify-center">
+                    {slider?.logo && (
+                        <img src={slider.logo} className='max-w-[300px] max-h-[300px]' />
+                      )
+                    }
+                    <img
                       src={slider.imagen}
                       alt="imagen prueba"
-                      className="max-w-full max-h-[70%]"
+                      className="max-w-full max-h-[600px]"
                     />
+                  </div>
                   </SwiperSlide>
                 ))}
               </Swiper>

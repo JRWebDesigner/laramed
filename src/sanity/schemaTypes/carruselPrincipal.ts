@@ -14,6 +14,11 @@ export const carruselPrincipal = defineType({
       name: 'imagen',
       title: 'Imagen',
       type: 'image'
+    }),
+    defineField({
+      name: 'logo',
+      title: 'Logo',
+      type: 'image'
     })
   ],
   preview: {
