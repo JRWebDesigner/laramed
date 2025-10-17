@@ -39,7 +39,7 @@ export const CATEGORIES_QUERY = defineQuery(`*[_type == "categoria"]{
 export const CARRUSEL_QUERY = defineQuery(`*[_type == "carruselPrincipal"]{
     _id,
     slideDescription,
-    "imagen": imagen.asset->url
+    "imagen": imagen.asset->url,
     "logo": logo.asset->url
   }`);
 
