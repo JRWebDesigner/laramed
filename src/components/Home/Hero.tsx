@@ -36,18 +36,18 @@ export default function Hero(){
                   key={index}
                   className="!flex flex-col-reverse md:flex-row justify-center md:!justify-around !items-center gap-7"
                 >
-                  <span className="text-5xl text-white font-bold text-center md:text-center">
+                  <span className="text-5xl text-white font-bold text-center md:text-center bg-[#64b9c0]/90 rounded-full p-3">
                     {slider.slideDescription}
                   </span>
-                  <div className="flex flex-col gap-2 items-center justify-center">
+                  <div className="flex flex-col gap-1">
                     {slider?.logo && (
-                        <img src={slider.logo} className='max-w-[300px] max-h-[300px]' />
+                        <img src={slider.logo} className='max-w-[200px] max-h-[100px] object-contain mx-auto' />
                       )
                     }
                     <img
                       src={slider.imagen}
                       alt="imagen prueba"
-                      className="max-w-full max-h-[600px]"
+                      className="max-w-full max-h-[500px]"
                     />
                   </div>
                   </SwiperSlide>
