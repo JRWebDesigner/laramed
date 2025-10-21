@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import Link from 'next/link'
 import { getCategories } from '@/lib/getQueries';
-import AccordionCategorias from '@/components/Productos/AccordionCategorias'
-import ProductsCat from '@/components/Productos/ProductsCat'
+import CategoriaClient from './CategoriaClient';
 
 export async function generateStaticParams() {
   const categoriesData = await getCategories();
@@ -13,50 +11,17 @@ export async function generateStaticParams() {
   }));
 }
 
-
-
 export const metadata: Metadata = {
   title: `Categorias - Laramed S.R.L: Líder en Importación de Equipos Médicos en Bolivia`,
   description: "Nuestra mision es ser un referente nacional, en suministro de equipo e insumo medico de alta tecnología, garantizando la calidad y soporte técnico oportuno, trabajando siempre el cuidado de la salud de los pacientes de nuestros clientes.",
 };
 
-export default async function CategoriaPage({ params }) {
-  const { slug } = await params;
-  
+export default async function CategoriaPage({ params }: { params: { slug: string } }) {
+  const { slug } = params;
   const categoriesData = await getCategories();
   const categorias = categoriesData.categories || [];
-  const categoriaActual = categorias.find(cat => cat.slug === slug);
-  return(
-    <>
-      <section className="relative bg-[url('/banner.jpg')] h-[50dvh] md:h-[60dvh] max-h-[600px] bg-cover bg-fixed flex justify-center items-center text-white">
-        <div className="absolute bg-black h-full w-full opacity-40 z-0"/>
-        <div className="z-20 text-center container mx-auto px-5">
-          <h1 className="font-bold text-4xl md:text-6xl text-shadow-lg mb-4">
-            {categoriaActual?.nombre || 'Categoría'}
-          </h1>
-          <p className="text-xl md:text-2xl opacity-90">
-            Productos y equipos médicos especializados
-          </p>
-        </div>
-      </section>  
-      
-      <section className='container mx-auto px-5 mb-6 mt-8'>
-        <div className='grid md:grid-cols-[3fr_1fr] gap-8'>
-          <div>
-            {/* Breadcrumb */}
-            <nav className="flex mb-6 text-sm text-gray-600">
-              <Link href="/" className="hover:text-blue-600">Inicio</Link>
-              <span className="mx-2">/</span>
-              <Link href="/productos" className="hover:text-blue-600">Productos</Link>
-              <span className="mx-2">/</span>
-              <span className="text-blue-600 font-medium">{categoriaActual?.nombre}</span>
-            </nav>
-            
-            <ProductsCat slug={slug} categoria={categoriaActual?.nombre} />
-          </div>
-          <AccordionCategorias slug={slug} />
-        </div>
-      </section>
-    </>
-  )
+  const categoriaActual = categorias.find(cat => cat.slug === slug) || null;
+
+  // Render a server component that simply hands off to a client component.
+  return <CategoriaClient slug={slug} categoriaInitial={categoriaActual} />;
 }

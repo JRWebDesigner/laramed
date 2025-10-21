@@ -21,9 +21,9 @@ export default function Categories(){
               categories && categories.length > 0 ?
               (
                  categories.map((category,index)=>(
-                  <Link key={index} href={`/categorias/${category.slug}`} className='border-1 border-gray-400 w-[350px] h-[350px] flex flex-col justify-center items-center rounded-full shadow-lg m-4 hover:scale-105 hover:shadow-2xl transition-all duration-300'>
+                  <Link key={index} href={`/categorias/${category.slug}`} className='border-1 border-gray-400 md:w-[370px] md:h-[370px] flex flex-col justify-center items-center rounded-full shadow-lg m-4 hover:scale-105 hover:shadow-2xl transition-all duration-300'>
                    <img src={category.imagen} className="max-h-[200px] w-auto max-w-[80%]" />
-                   <h3 className="text-center font-semibol text-3xl">{category.nombre}</h3>
+                   <h3 className="max-w-[72%] text-center font-semibol text-3xl">{category.nombre}</h3>
                  </Link> 
                  ))
               )
