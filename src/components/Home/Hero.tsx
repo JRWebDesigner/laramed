@@ -34,7 +34,7 @@ export default function Hero(){
               {sliders.map((slider, index) => (
                 <SwiperSlide
                   key={index}
-                  className="!flex flex-col-reverse md:flex-row justify-center md:!justify-around !items-center gap-7"
+                  className="!w-[100vw] !md:w-auto !flex flex-col-reverse md:flex-row justify-center md:!justify-around !items-center gap-7"
                 >
                   <span className="text-5xl text-white font-bold text-center md:text-center bg-[#64b9c0]/90 rounded-full p-3">
                     {slider.slideDescription}
