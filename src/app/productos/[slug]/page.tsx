@@ -64,7 +64,7 @@ export default async function ProductoPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
-      <section className="container mx-auto grid md:grid-cols-2 place-items-center min-h-screen gap-10 pt-22 md:pt-0 px-5">
+      <section className="container mx-auto grid md:grid-cols-2 min-h-screen gap-10 pt-22 px-5">
         
         <ProductoCarousel 
           imagenes={todasLasImagenes} 

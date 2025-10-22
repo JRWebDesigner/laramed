@@ -14,7 +14,7 @@ interface ProductoCarouselProps {
 
 export default function ProductoCarousel({ imagenes, nombre }: ProductoCarouselProps) {
   return (
-    <div className="w-[80%] md:w-full md:max-w-lg">
+    <div className="w-[80%] md:w-full md:max-w-3lx">
       {imagenes.length > 0 ? (
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
@@ -22,15 +22,15 @@ export default function ProductoCarousel({ imagenes, nombre }: ProductoCarouselP
           pagination={{ clickable: true }}
           autoplay={{ delay: 5000 }}
           loop={imagenes.length > 1}
-          className="!rounded-lg !shadow-lg !w-[300px] !md:w-auto"
+          className="!rounded-lg !shadow-lg !w-[300px] md:!w-full"
         >
           {imagenes.map((imagen, index) => (
             <SwiperSlide key={index}>
-              <div className="flex items-center justify-center h-96 bg-gray-100 rounded-lg">
+              <div className="flex items-center justify-center h-[600px] bg-gray-100 rounded-lg">
                 <img 
                   src={imagen} 
                   alt={`${nombre} - Imagen ${index + 1}`}
-                  className="max-h-96 w-auto object-contain"
+                  className="max-h-[600px] w-auto object-contain"
                 />
               </div>
             </SwiperSlide>
