@@ -14,7 +14,7 @@ interface ProductoCarouselProps {
 
 export default function ProductoCarousel({ imagenes, nombre }: ProductoCarouselProps) {
   return (
-    <div className="!w-[80%] md:w-full max-w-lg">
+    <div className="w-[80%] md:w-full md:max-w-lg">
       {imagenes.length > 0 ? (
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
@@ -22,7 +22,7 @@ export default function ProductoCarousel({ imagenes, nombre }: ProductoCarouselP
           pagination={{ clickable: true }}
           autoplay={{ delay: 5000 }}
           loop={imagenes.length > 1}
-          className="rounded-lg shadow-lg"
+          className="!rounded-lg !shadow-lg !w-[300px] !md:w-auto"
         >
           {imagenes.map((imagen, index) => (
             <SwiperSlide key={index}>

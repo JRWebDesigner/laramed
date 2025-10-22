@@ -29,14 +29,14 @@ export default function Hero(){
               pagination={{ clickable: true }}
               navigation={true}
               modules={[Autoplay, Pagination, Navigation]}
-              className="relative h-[100dvh] w-full !px-7"
+              className="!relative !h-[100dvh] !max-h-[800px] !w-full !px-7"
             >
               {sliders.map((slider, index) => (
                 <SwiperSlide
                   key={index}
-                  className="!flex flex-col-reverse md:flex-row justify-center md:!justify-around !items-center gap-7"
+                  className="!w-[100%] !flex flex-col-reverse md:flex-row justify-center md:!justify-around !items-center gap-7"
                 >
-                  <span className="text-5xl text-white font-bold text-center md:text-center bg-[#64b9c0]/90 rounded-full p-3">
+                  <span className="text-4xl md:text-5xl text-white font-bold text-center md:text-center bg-[#64b9c0]/90 rounded-full p-3 w-[94%] md:w-auto">
                     {slider.slideDescription}
                   </span>
                   <div className="flex flex-col gap-1">
@@ -47,7 +47,7 @@ export default function Hero(){
                     <img
                       src={slider.imagen}
                       alt="imagen prueba"
-                      className="max-w-full max-h-[500px]"
+                      className="max-w-full md:max-h-[500px]"
                     />
                   </div>
                   </SwiperSlide>
