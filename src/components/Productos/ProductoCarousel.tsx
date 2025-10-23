@@ -22,7 +22,7 @@ export default function ProductoCarousel({ imagenes, nombre }: ProductoCarouselP
           pagination={{ clickable: true }}
           autoplay={{ delay: 5000 }}
           loop={imagenes.length > 1}
-          className="!rounded-lg !shadow-lg !w-[300px] md:!w-full"
+          className="!rounded-lg !shadow-lg !w-[350px] md:!w-full"
         >
           {imagenes.map((imagen, index) => (
             <SwiperSlide key={index}>

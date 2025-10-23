@@ -2,7 +2,7 @@ import { FaWhatsapp, FaFacebook, FaTiktok } from 'react-icons/fa';
 
 export default function Footer(){
   return(
-    <footer className="bg-[#15599a] h-[50dvh] grid items-center md:grid-cols-3 text-white font-semibold place-items-center">
+    <footer className="bg-[#15599a] h-[50dvh] grid items-center md:grid-cols-3 text-white font-semibold place-items-center px-4">
       <img src="/logob.png" className="w-[300px]" />
       <div>
         <h2 className="font-bold text-xl">INFORMACION</h2>
@@ -18,7 +18,7 @@ export default function Footer(){
       </div>
       <div>
         <h2 className="font-bold text-xl">REDES SOCIALES</h2>
-        <div className="flex gap-6 items-center font-bold">
+        <div className="flex gap-6 items-center font-bold justify-around">
           <a href="https://wa.link/yfn51c">
             <FaWhatsapp className="h-12"/>
           </a>

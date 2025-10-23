@@ -39,9 +39,11 @@ useEffect(() => {
                 className="container mx-auto text-xl font-semibold text-center !p-18"
             >
                 {destacados.map((destacado, index) => (
-                <SwiperSlide className="!w-[280px] md:!w-[400px] lg:!w-[600px]">
-                    <img  src={destacado.imagenPrincipal} alt={destacado.nombre} className="w-full h-auto  max-h-[260px] object-contain" />
-                    <h2 className="mt-4">{destacado.nombre}</h2>
+                <SwiperSlide className="!w-[280px] md:!w-[400px] lg:!w-[600px] shadow-lg p-3 rounded-2xl">
+                    <Link href={`/productos/${destacado.slug}`}>
+                        <img  src={destacado.imagenPrincipal} alt={destacado.nombre} className="w-full h-auto  max-h-[260px] object-contain" />
+                        <h2 className="mt-4">{destacado.nombre}</h2>
+                    </Link>
                 </SwiperSlide>
                ))} 
             </Swiper>
